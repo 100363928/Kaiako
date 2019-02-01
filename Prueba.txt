@@ -2,8 +2,12 @@ Hola
 
 PRUEBA FWAdgfd
 
+<<<<<<< HEAD
 Prueba Farid
 
 Prueba pull Request
 
 Prueba Merge
+=======
+Prueba Jaime
+>>>>>>> faa7d4612576c079828240f9508d48d05e01a8cc
