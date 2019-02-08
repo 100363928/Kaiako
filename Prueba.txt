@@ -6,9 +6,6 @@ ppruebaa atom
 PRUEBA DANI
 LOOOOOP
 
-<<<<<<< HEAD
 
 prueba Farid Wanis
-=======
 PRUEBA SARA
->>>>>>> ae788c575ff95027801db6160ae873810d2514bc
