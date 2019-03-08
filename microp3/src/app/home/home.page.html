@@ -1,0 +1,69 @@
+<ion-app>
+  <ion-header>
+    <ion-item color="secondary">
+      Selecciona ejercicios
+      <img id="logo" src="../assets/logo.png"/>
+      <ion-button slot="end" color="primary" (click)='guardar()'>Guardar Rutina</ion-button>
+    </ion-item>
+  </ion-header>
+      
+     <ion-content id="cont1">
+      <ion-list>
+            <ion-list>
+                <ion-item><ion-button color="tertiary" (click)='troncosupf()'> Tronco Superior</ion-button></ion-item>
+                <div id="prueba">
+                  <ion-list *ngFor="let entry of troncosup"> 
+                    <ion-item>
+                        {{entry.val}}
+                      <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                    </ion-item>
+                  </ion-list>
+                </div>
+            
+                <ion-item><ion-button color="tertiary" (click)='troncoinff()'>Tronco inferior</ion-button></ion-item>
+                  <div id="prueba2">
+                      <ion-list *ngFor="let entry of inf"> 
+                        <ion-item>
+                            {{entry.val}}
+                          <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                        </ion-item>
+                      </ion-list>
+                    </div>
+
+                <ion-item><ion-button color="tertiary" (click)='abdomen()'>Abdomen</ion-button></ion-item>
+                  <div id="prueba3">
+                      <ion-list *ngFor="let entry of abs"> 
+                        <ion-item>
+                            {{entry.val}}
+                          <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                        </ion-item>
+                      </ion-list>
+                    </div>
+                
+
+                <ion-item><ion-button color="tertiary" (click)='cardio()'>Cardio</ion-button></ion-item>
+                  <div id="prueba4">
+                      <ion-list *ngFor="let entry of car"> 
+                        <ion-item>
+                            {{entry.val}}
+                          <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                        </ion-item>
+                      </ion-list>
+                    </div>
+                
+             </ion-list>
+      </ion-list>
+      <div id="rutina">
+        <ion-label id="rut"><h1 class="Amatic"> Rutina</h1></ion-label>
+        <ion-list *ngFor="let entry of fin">
+            <ion-item-sliding>
+                <ion-item>{{entry}}</ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option (click)="borrar(entry)">Borrar</ion-item-option>
+                  </ion-item-options>
+            </ion-item-sliding>
+         </ion-list>
+      </div>
+     </ion-content> 
+</ion-app>
+

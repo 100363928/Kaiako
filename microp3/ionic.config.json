@@ -1,0 +1,7 @@
+{
+  "name": "microp3",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
