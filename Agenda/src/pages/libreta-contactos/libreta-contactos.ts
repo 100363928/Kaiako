@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NuevoContactoPage } from '../nuevo-contacto/nuevo-contacto';
-
+import {Contact} from '../../models/contact.model';
+import {ContactService} from '../../services/contact.service';
 /**
  * Generated class for the LibretaContactosPage page.
  *
@@ -16,13 +17,20 @@ import { NuevoContactoPage } from '../nuevo-contacto/nuevo-contacto';
 })
 export class LibretaContactosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private ContactService: ContactService) {
+  }
+   
+  contacts: Contact [] = [];
+
+  
+
+  ionViewWillEnter(){
+    this.contacts = this.ContactService.getContacts();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LibretaContactosPage');
-  }
-  
+
+  // lo que el llama onLoadContactosPage
   ContactosP(){
     this.navCtrl.push(NuevoContactoPage);
     }
