@@ -24,7 +24,7 @@ export class EditarContactoPage {
   }
 
   ionViewDidLoad() {
-    this.contacto= this.contactService.getContacts()[this.contactService.getindiceEdicion()];
+    //this.contacto= this.contactService.getContacts()[this.contactService.getindiceEdicion()];
     console.log('ionViewDidLoad EditarContactoPage');
     var inputs = document.getElementsByTagName('ion-input');
     /*inputs[0].setAttribute("value", this.contacto.nombre);

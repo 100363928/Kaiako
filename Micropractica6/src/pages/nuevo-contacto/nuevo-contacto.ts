@@ -21,7 +21,7 @@ export class NuevoContactoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public dbFirebase:FirebaseDbProvider) {
   }
 
-  ionViewDidLoad() {qa
+  ionViewDidLoad() {
     console.log('ionViewDidLoad NuevoContactoPage');
   }
 
