@@ -5,6 +5,7 @@
 </ion-header>
  
 <ion-content padding>
+  <img class="icon" src="./../../assets/logoKaiako.png">
   <form class="form" [formGroup]="validations_form"  (ngSubmit)="loginUser(validations_form.value)">
  
     <ion-item>
@@ -31,7 +32,7 @@
       </ng-container>
     </div>
  
-    <ion-button  class="submit-btn" type="submit"  [disabled]="!validations_form.valid">Log In</ion-button>
+    <ion-button  class="submit-btn" type="submit"  [disabled]="!validations_form.valid">Entrar</ion-button>
  
     <label class="error-message">{{errorMessage}}</label>
   </form>
