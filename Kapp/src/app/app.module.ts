@@ -12,7 +12,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { AuthenticateService } from './services/authentication.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import {ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { ReactiveFormsModule } from '@angular/forms';
 import * as firebase from 'firebase';
  
 firebase.initializeApp(environment.firebase);
@@ -20,7 +22,7 @@ firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule,ReactiveFormsModule, IonicModule.forRoot(), AppRoutingModule, AngularFireAuthModule],
+  imports: [BrowserModule,ReactiveFormsModule, IonicModule.forRoot(), AppRoutingModule, AngularFireAuthModule, AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule],
   providers: [
     StatusBar,
     SplashScreen, AuthenticateService,

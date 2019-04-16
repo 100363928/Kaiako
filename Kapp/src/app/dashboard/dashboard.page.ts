@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ModalController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service'
+import { Todo, TodoService } from '../services/todo.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,21 +10,33 @@ import { AuthenticateService } from '../services/authentication.service'
 })
 export class DashboardPage implements OnInit {
  
- 
+  todos: Todo[];
   userEmail: string;
  
   constructor(
     private navCtrl: NavController,
-    private authService: AuthenticateService
+    private authService: AuthenticateService,
+    public todoService: TodoService
   ) {}
  
   ngOnInit(){
-    
     if(this.authService.userDetails()){
       this.userEmail = this.authService.userDetails().email;
     }else{
       this.navCtrl.navigateBack('');
     }
+    this.todoService.getTodos().subscribe(res => {
+      this.todos = res;
+    });
+  }
+
+  remove(item){
+    this.todoService.removeTodo(item.id);
+  }
+
+  goToSolicitud(){
+    console.log("solicitud");
+    this.navCtrl.navigateForward('/solicitud');
   }
  
   logout(){
