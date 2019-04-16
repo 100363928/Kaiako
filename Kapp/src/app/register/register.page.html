@@ -8,7 +8,7 @@
   <form class="form" [formGroup]="validations_form"  (ngSubmit)="tryRegister(validations_form.value)">
  
     <ion-item>
-      <ion-label  position="floating" font="4%" color="primary">Nombre</ion-label>
+      <ion-label  position="floating" color="primary">Nombre</ion-label>
       <ion-input type="text" formControlName="Nombre"></ion-input>
     </ion-item>
 
@@ -45,21 +45,11 @@
         </div>
       </ng-container>
     </div>
-
-    <ion-item>
-        <ion-label  position="floating" color="primary">Peso</ion-label>
-        <ion-input type="text" formControlName="peso"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label  position="floating" color="primary">Altura</ion-label>
-        <ion-input type="text" formControlName="altura"></ion-input>
-    </ion-item>
-
  
     
-    <ion-button expand=block; class="submit-btn" href="/register2" type="submit" [disabled]="!validations_form.valid">Registrarse</ion-button>
-    <label class="error-message errorm">{{errorMessage}}</label>
-    <label class="success-message ">{{successMessage}}</label>
+    <ion-button  class="submit-btn" type="submit" onclick="writeUserData" [disabled]="!validations_form.valid">Registrarse</ion-button>
+    <label class="error-message">{{errorMessage}}</label>
+    <label class="success-message">{{successMessage}}</label>
   </form>
-  <p class="go-to-login"> <a class="init" (click)="goLoginPage()">Inicia sesión</a>
+  <p class="go-to-login"><a (click)="goLoginPage()">Inicia sesión</a>
 </ion-content>

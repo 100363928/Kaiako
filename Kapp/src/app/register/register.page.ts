@@ -51,12 +51,6 @@ export class RegisterPage implements OnInit {
       NombreUsr: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      altura: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
-      peso: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
     });
   }
  
@@ -77,8 +71,6 @@ export class RegisterPage implements OnInit {
   goLoginPage(){
     this.navCtrl.navigateBack('');
   }
-
-  
  
  
 }
