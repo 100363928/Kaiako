@@ -1,0 +1,66 @@
+.container{
+    height: 140%;
+    width: 100%;
+    background-color: #162a3a;
+}
+
+.b{
+
+    background-color: white;
+    width: 45%;
+    height: 30%;
+    display: inline-block;
+   margin-left: 2.5%;
+   margin-right: 2%;
+   margin-top: 5%;
+}
+
+.img{
+  height:50%;
+  align-items: center;
+}
+.desc{
+    height:40%;
+    align-items: center;
+  }
+.desc h1 {
+    font-size: 20px;
+}
+.desc button{
+    background-color: #8c3936;
+    color:white;
+    width: 40%;
+    margin:auto;
+    display:block;
+    padding: 3%;
+}
+
+  .icon{
+      display: block;
+      margin-top:5%;
+      margin-left: auto;
+      margin-right: auto;
+      align-self: center;
+      width: 70%; 
+  }
+
+  .buscador{
+    background-color: #e3e3e3;
+    width: 100%;
+    height: 8%;
+    padding: 3%;
+    
+  }
+
+  .busc{
+    border-radius: 25px;
+    background-color:white;
+    width: 70%;
+    height: 80%;
+    margin:auto;
+    align-self: center;
+    display: block;
+    text-align: center;
+  }
+  
+

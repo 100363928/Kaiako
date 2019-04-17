@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'solicitud', loadChildren: './solicitud/solicitud.module#SolicitudPageModule' },
   { path: 'details', loadChildren: './todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'details/:id', loadChildren: './todo-details/todo-details.module#TodoDetailsPageModule' },
+  { path: 'entrena', loadChildren: './entrena/entrena.module#EntrenaPageModule' },
+  { path: 'explora', loadChildren: './explora/explora.module#ExploraPageModule' },
   
 ];
 
