@@ -1,5 +1,5 @@
 .container{
-    height: 140%;
+    height: 170%;
     width: 100%;
     background-color: #162a3a;
 }
@@ -62,5 +62,11 @@
     display: block;
     text-align: center;
   }
-  
+
+  .scroll-y {
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    overflow-y: var(--overflow);
+}
+
 
