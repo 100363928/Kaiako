@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -6,17 +5,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EntrenadorTabsPage } from './entrenador-tabs.page';
+import { PerfilEntrPage } from './perfil-entr.page';
 
-import { EntrenadorTabsPageRoutingModule } from './tabs.router.module';
+const routes: Routes = [
+  {
+    path: '',
+    component: PerfilEntrPage
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EntrenadorTabsPageRoutingModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [EntrenadorTabsPage]
+  declarations: [PerfilEntrPage]
 })
-export class EntrenadorTabsPageModule {}
+export class PerfilEntrPageModule {}

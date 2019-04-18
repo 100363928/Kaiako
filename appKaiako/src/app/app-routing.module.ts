@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },  { path: 'inicio', loadChildren: './inicio/inicio.module#InicioPageModule' },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
+  { path: 'inicio', loadChildren: './inicio/inicio.module#InicioPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
   { path: 'register-entr', loadChildren: './register-entr/register-entr.module#RegisterEntrPageModule' },
   { path: 'entrenador-tabs', loadChildren: './entrenador-tabs/entrenador-tabs.module#EntrenadorTabsPageModule' },
@@ -11,7 +13,6 @@ const routes: Routes = [
   { path: 'solicitud', loadChildren: './solicitud/solicitud.module#SolicitudPageModule' },
   { path: 'aceptar-solicitud', loadChildren: './aceptar-solicitud/aceptar-solicitud.module#AceptarSolicitudPageModule' },
   { path: 'crear-rutina', loadChildren: './crear-rutina/crear-rutina.module#CrearRutinaPageModule' }
-
 ];
 @NgModule({
   imports: [
