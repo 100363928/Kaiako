@@ -27,6 +27,7 @@ export class DashboardPage implements OnInit {
     }
     this.todoService.getTodos().subscribe(res => {
       this.todos = res;
+      console.log(this.todos);
     });
   }
 

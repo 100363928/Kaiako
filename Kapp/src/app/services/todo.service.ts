@@ -9,6 +9,7 @@ export interface Todo {
   priority: number;
   createdAt: number;
 }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +32,7 @@ export class TodoService {
   }
 
   getTodos() {
+    console.log(this.todos);
     return this.todos;
   }
 
