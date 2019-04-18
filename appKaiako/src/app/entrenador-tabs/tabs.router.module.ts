@@ -30,7 +30,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: './perfil-entr/perfil-entr.module#PerfilEntrPageModule'
+            loadChildren: '../perfil-entr/perfil-entr.module#PerfilEntrPageModule'
           }
         ]
       },
