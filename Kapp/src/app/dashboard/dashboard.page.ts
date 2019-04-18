@@ -39,6 +39,10 @@ export class DashboardPage implements OnInit {
     console.log("solicitud");
     this.navCtrl.navigateForward('/solicitud');
   }
+  goToEntrena(){
+    console.log("entrena");
+    this.navCtrl.navigateForward('/entrena');
+  }
  
   logout(){
     this.authService.logoutUser()
