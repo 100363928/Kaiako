@@ -19,11 +19,7 @@ export class MenuPage implements OnInit {
     {
       title: 'Aceptar solicitud',
       url: '/menu/aceptar-solicitud'
-    },
-    {
-      title: 'Notificaciones',
-      url: '/menu/notificaciones'
-    },
+    }
   ];
 
   selectedPath = '';
