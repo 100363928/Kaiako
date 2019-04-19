@@ -11,19 +11,29 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="one" *ngFor="let solicitud of solicitud">
-    <ion-card-header>
-      <ion-card-subtitle>Solicitud de </ion-card-subtitle>
-      <ion-card-title id="nombre" >{{solicitud.usuario}}  </ion-card-title>
-      <img [src]="solicitud.img">
-    </ion-card-header>
-    <ion-card-content >
-        <p><strong>Peso: </strong>{{solicitud.peso}} </p>
-        <p><strong>Altura: </strong>{{solicitud.altura}} </p>
-        <p><strong>Objetivo: </strong> {{solicitud.objetivo}}</p>
-        <p><strong>Mensaje: </strong>{{solicitud.comentario}}</p>
-        <button class="boton">Aceptar</button>
-        <button class="boton">Rechazar</button>
-    </ion-card-content>
+  <ion-list>
+    <ng-container *ngIf="!solicitudes || solicitudes.length == 0">
+      <div *ngFor="let n of [0,1,2]" padding>
+        <ion-skeleton-text></ion-skeleton-text>
+        <p>
+          <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+        </p>
+      </div>
+    </ng-container>
+    <ion-card class="one" *ngFor="let solicitud of solicitudes">
+        <ion-card-header>
+          <ion-card-subtitle>Solicitud de </ion-card-subtitle>
+          <ion-card-title id="nombre" >{{solicitud.nombre}}  </ion-card-title>
+          <img src='../assets/Perfil.jpeg'>
+        </ion-card-header>
+        <ion-card-content >
+            <p><strong>Peso: </strong>{{solicitud.peso}} </p>
+            <p><strong>Altura: </strong>{{solicitud.altura}} </p>
+            <p><strong>Objetivo: </strong> {{solicitud.objetivo}}</p>
+            <p><strong>Mensaje: </strong>{{solicitud.mensaje}}</p>
+            <button class="boton">Aceptar</button>
+            <button class="boton" (click)="rechazar(solicitud)">Rechazar</button>
+        </ion-card-content>
     </ion-card>
+  </ion-list>
 </ion-content>

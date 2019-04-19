@@ -7,8 +7,6 @@ const routes: Routes = [
   { path: 'inicio', loadChildren: './inicio/inicio.module#InicioPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
   { path: 'register-entr', loadChildren: './register-entr/register-entr.module#RegisterEntrPageModule' },
-  { path: 'ver-entrenador', loadChildren: './ver-entrenador/ver-entrenador.module#VerEntrenadorPageModule' },
-  { path: 'solicitud', loadChildren: './solicitud/solicitud.module#SolicitudPageModule' },
   { path: 'crear-rutina', loadChildren: './crear-rutina/crear-rutina.module#CrearRutinaPageModule' },
   { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' }
 ];

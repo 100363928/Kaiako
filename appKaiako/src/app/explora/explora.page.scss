@@ -1,7 +1,7 @@
 .card{
-    width: 125px;
+    width: 40%;
+    margin: 5%;
     display: inline-block;
-    margin-bottom:2%;
 }
 #im{
     height: 50px;
@@ -31,7 +31,10 @@ img{
     margin:auto;
     margin-bottom: 12%;
     padding :3%;
-
+}
+.card ion-button{
+    width: 40%;
+    margin: auto;
 }
 .star{
     color:#8c3936;

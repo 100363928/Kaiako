@@ -1,9 +1,32 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>solicitud</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaulthref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>KAIAKO</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+    <ion-list lines="full"> 
+      <ion-item>
+        <ion-input required type="text" placeholder="Introduce tu nombre" [(ngModel)]="solicitud.nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input required type="number" placeholder="¿Cuánto pesas?" [(ngModel)]="solicitud.peso"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input required type="number" placeholder="¿Cuánto mides?" [(ngModel)]="solicitud.altura"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-input required type="number" placeholder="¿Cuántos días a la semana quieres entrenar?" [(ngModel)]="solicitud.dias"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input required type="text" palceholder="¿Cuál es tu objetivo con los entrenamientos?" [(ngModel)]="solicitud.objetivo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Introduce opcionalmente un mensaje para el entrenador" [(ngModel)]="solicitud.mensaje"></ion-input>
+      </ion-item> 
+    </ion-list>
+    <ion-button class="submit-btn" (click)="saveTodo()">Enviar Solicitud</ion-button>
 </ion-content>

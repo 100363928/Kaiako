@@ -16,6 +16,14 @@ const routes: Routes = [
         loadChildren: '../tab1/tab1.module#Tab1PageModule'
       },
       {
+        path: 'tab1/ver-entrenador',
+        loadChildren: '../ver-entrenador/ver-entrenador.module#VerEntrenadorPageModule'
+      },
+      {
+        path: 'tab1/ver-entrenador/solicitud',
+        loadChildren: '../solicitud/solicitud.module#SolicitudPageModule'
+      },
+      {
         path: 'tab2',
         loadChildren: '../tab2/tab2.module#Tab2PageModule'
       },

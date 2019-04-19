@@ -2,52 +2,58 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { getLocaleExtraDayPeriods } from '@angular/common';
 
-export interface Todo {
-  task: string;
-  priority: number;
-  createdAt: number;
+export interface Solicitud {
+  key?: string;
+  nombre: string;
+  altura: number;
+  peso: number;
+  dias: number;
+  objetivo: string;
+  mensaje: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  private todosCollection: AngularFirestoreCollection<Todo>;
-  private todos: Observable<Todo[]>;
+  private solicitudesCollection: AngularFirestoreCollection<Solicitud>;
+  private solicitudes: Observable<Solicitud[]>;
 
   constructor(db: AngularFirestore) { 
-    this.todosCollection = db.collection<Todo>('todos');
+    this.solicitudesCollection = db.collection<Solicitud>('solicitudes');
 
-    this.todos = this.todosCollection.snapshotChanges().pipe(
+    this.solicitudes = this.solicitudesCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
+          console.log(id);
           return { id, ...data};
         });
       })
     );
   }
 
-  getTodos() {
-    console.log(this.todos);
-    return this.todos;
+  getSolicitudes() {
+    console.log(this.solicitudes);
+    return this.solicitudes;
   }
 
-  getTodo(id) {
-    return this.todosCollection.doc<Todo>(id).valueChanges();
+  getSolicitud(id) {
+    return this.solicitudesCollection.doc<Solicitud>(id).valueChanges();
   }
 
-  updateTodo(todo: Todo, id: string) {
-    return this.todosCollection.doc(id).update(todo);
+  updateSolicitud(solicitud: Solicitud, id: string) {
+    return this.solicitudesCollection.doc(id).update(solicitud);
   }
-  addTodo(todo: Todo){
-    return this.todosCollection.add(todo);
+
+  addSolicitud(solicitud: Solicitud){
+    return this.solicitudesCollection.add(solicitud);
   }
-  removeTodo(id){
-    return this.todosCollection.doc(id).delete();
+
+  removeSolicitud(id){
+    return this.solicitudesCollection.doc(id).delete();
   }
 
 }

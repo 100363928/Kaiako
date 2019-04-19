@@ -1,3 +1,4 @@
+import { Solicitud, TodoService } from './../services/todo.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,15 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AceptarSolicitudPage implements OnInit {
  
-  solicitud:Array<Object>
-  constructor() { 
-    this.solicitud=[
-      {usuario:'Pepe Jj', peso:65,altura:175, objetivo:'Aumentar Masa', comentario:' te adoro y quiero entrenar contigo',img:'/assets/Perfil.jpeg'},
-      {usuario:'Pamela Lopez', peso:60,altura:155, objetivo:'Bajar Peso', comentario:'No puedo sola',img:'/assets/Perfil.jpeg'}
-    ]
-  }
-  
+  solicitudes: Solicitud[];
+  constructor(private todoService: TodoService) {}
+
   ngOnInit() {
+    this.todoService.getSolicitudes().subscribe(res => {
+      console.log(res);
+      console.log("Pidiendo solicitudes");
+      this.solicitudes = res;
+    });
   }
+
+  rechazar(item){
+    console.log(item.id);
+    this.todoService.removeSolicitud(item.id);
+  }
+
+  aceptar(item){}
+
 
 }
