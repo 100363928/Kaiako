@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'ver-entrenador', loadChildren: './ver-entrenador/ver-entrenador.module#VerEntrenadorPageModule' },
   { path: 'solicitud', loadChildren: './solicitud/solicitud.module#SolicitudPageModule' },
   { path: 'aceptar-solicitud', loadChildren: './aceptar-solicitud/aceptar-solicitud.module#AceptarSolicitudPageModule' },
-  { path: 'crear-rutina', loadChildren: './crear-rutina/crear-rutina.module#CrearRutinaPageModule' }
+  { path: 'crear-rutina', loadChildren: './crear-rutina/crear-rutina.module#CrearRutinaPageModule' },
+  {path: 'perfil-entr', loadChildren: './perfil-entr/perfil-entr.module#PerfilEntrPageModule'}
 ];
 @NgModule({
   imports: [

@@ -1,9 +1,36 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>inicio</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+ 
+<ion-content padding>
+  <img class="icon" src="./../../assets/logoKaiako.png">
+  <form class="form" [formGroup]="validations_form"  (ngSubmit)="loginUser(validations_form.value)">
+ 
+    <ion-item>
+      <ion-label  position="floating" color="primary">Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    
+ 
+    <ion-item>
+      <ion-label  position="floating" color="primary">Password</ion-label>
+      <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
+    </ion-item>
+    
+ 
+    <ion-button expand="block" class="submit-btn" type="submit"  [disabled]="!validations_form.valid">Entrar</ion-button>
+ 
+    <label class="error-message">{{errorMessage}}</label>
+  </form>
+  <div  style="text-align:center" class="creaCuenta">
+    <h1 style="text-align:center" class="creaH1" >¿No tienes cuenta?</h1>
+    <button expand="block" class="boton">
+      <a style="color:white" (click)="registrarCliente()"> Quiero entrenar</a>
+    </button>
+    <button expand="block" class="boton">
+        <a (click)="registrarEntrenador()" style="color:white">Soy entrenador</a>
+      </button>
+  </div>
 </ion-content>
