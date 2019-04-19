@@ -1,0 +1,38 @@
+.card{
+    width: 125px;
+    display: inline-block;
+    margin-bottom:2%;
+}
+#im{
+    height: 50px;
+}
+.card ion-card-title {
+    font-size: 15px;
+    text-align: center;
+    margin:5%;
+}
+img{
+    width: 50%;
+    display: block;
+    align-self: auto;
+    margin:auto;
+}
+
+.card p {
+    text-align: center;
+    margin:5%;
+}
+
+.card button {
+   color: white;
+   background-color: #8c3936;
+   display: block;
+    align-self: auto;
+    margin:auto;
+    margin-bottom: 12%;
+    padding :3%;
+
+}
+.star{
+    color:#8c3936;
+}

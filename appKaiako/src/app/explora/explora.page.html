@@ -11,5 +11,14 @@
 </ion-header>
 
 <ion-content>
-
+    <ion-card class="card" *ngFor="let anuncio of anuncio">
+        <ion-card-title id="nombre">{{anuncio.nombre}} </ion-card-title>
+        <div id="im">
+            <img [src]="anuncio.img">
+        </div>
+        <p>
+            {{anuncio.descr}}
+        </p>
+        <button>Ver</button>
+      </ion-card>
 </ion-content>

@@ -1,76 +1,24 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>KAIAKO</ion-title>
-    <ion-buttons routerLink = "/menu/notificaciones" slot="end">
-      <ion-icon size="large" name="notifications"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content >
-
-<div class="container">
-    <div class="buscador">
-      <div class="busc"><ion-input placeholder=" Busca Entrenador"></ion-input></div>
-    </div>
-    <div class="block b">
-      <div class="img">
-          <img class="icon" src="./../../assets/Perfil.jpeg">
-      </div>
-      <div class="desc">
-        <h1 style="text-align:center">Nombre Ent</h1>
-        <button>Ver Mas</button>
-      </div>
-    </div>
-    <div class="block2 b">
-        <div class="img">
-            <img class="icon" src="./../../assets/Perfil.jpeg">
-        </div>
-        <div class="desc">
-          <h1 style="text-align:center">Nombre Ent</h1>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>KAIAKO</ion-title>
+      <ion-buttons routerLink = "/menu/notificaciones" slot="end">
+        <ion-icon size="large" name="notifications"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+      <ion-card class="card" *ngFor="let entrenador of entrenador">
+          <ion-card-title id="nombre">{{entrenador.nombre}} </ion-card-title>
+          <img [src]="entrenador.img">
+          <p>
+              {{entrenador.descr}}
+          </p>
+          <p class="star"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon></p>
           <button>Ver Mas</button>
-        </div>
-    </div>
-    <div class="block3 b">
-        <div class="img">
-            <img class="icon" src="./../../assets/Perfil.jpeg">
-        </div>
-        <div class="desc">
-          <h1 style="text-align:center">Nombre Ent</h1>
-          <button>Ver Mas</button>
-        </div>
-    </div>
-    <div class="block4 b">
-        <div class="img">
-            <img class="icon" src="./../../assets/Perfil.jpeg">
-        </div>
-        <div class="desc">
-          <h1 style="text-align:center">Nombre Ent</h1>
-          <button>Ver Mas</button>
-        </div>
-    </div>
-    <div class="block5 b">
-        <div class="img">
-            <img class="icon" src="./../../assets/Perfil.jpeg">
-        </div>
-        <div class="desc">
-          <h1 style="text-align:center">Nombre Ent</h1>
-          <button>Ver Mas</button>
-        </div>
-    </div>
-    <div class="block6 b">
-        <div class="img">
-            <img class="icon" src="./../../assets/Perfil.jpeg">
-        </div>
-        <div class="desc">
-          <h1 style="text-align:center">Nombre Ent</h1>
-          <button>Ver Mas</button>
-        </div>
-    </div>
-</div>
-</ion-content>
-
-
+        </ion-card>
+  </ion-content>
+  

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AnyTxtRecord } from 'dns';
 
 @Component({
   selector: 'app-clientes-entr',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesEntrPage implements OnInit {
 
-  constructor() { }
+  clientes: any;
+  constructor() { 
+    this.clientes = [
+      'Andrea Perez',
+      'Pedro Gonzalez'
+    ]
+  }
 
   ngOnInit() {
   }

@@ -11,5 +11,19 @@
 </ion-header>
 
 <ion-content>
-  <h2>Aceptar Solicitud</h2>
+  <ion-card class="one" *ngFor="let solicitud of solicitud">
+    <ion-card-header>
+      <ion-card-subtitle>Solicitud de </ion-card-subtitle>
+      <ion-card-title id="nombre" >{{solicitud.usuario}}  </ion-card-title>
+      <img [src]="solicitud.img">
+    </ion-card-header>
+    <ion-card-content >
+        <p><strong>Peso: </strong>{{solicitud.peso}} </p>
+        <p><strong>Altura: </strong>{{solicitud.altura}} </p>
+        <p><strong>Objetivo: </strong> {{solicitud.objetivo}}</p>
+        <p><strong>Mensaje: </strong>{{solicitud.comentario}}</p>
+        <button class="boton">Aceptar</button>
+        <button class="boton">Rechazar</button>
+    </ion-card-content>
+    </ion-card>
 </ion-content>

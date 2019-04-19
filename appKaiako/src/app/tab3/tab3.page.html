@@ -1,15 +1,44 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      KAIAKO
-    </ion-title>
-    <ion-buttons routerLink = "/menu/notificaciones" slot="end">
-      <ion-icon size="large" name="notifications"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>KAIAKO</ion-title>
+      <ion-buttons routerLink = "/menu/notificaciones" slot="end">
+        <ion-icon size="large" name="notifications"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
 </ion-header>
+<ion-content >
+    <ion-card class="one">
+        <ion-card-header>
+          <ion-card-subtitle *ngFor="let usuario of usuario">{{usuario}}</ion-card-subtitle>
+          <ion-card-title id="nombre"  *ngFor="let nombre of nombre">{{nombre}} </ion-card-title>
+          <img src="../../assets/Perfil.jpeg">
+          <p style="text-align: center" *ngFor="let desc of descrip">{{desc}} pts Kaiako </p>
+          <ion-icon  class="edit" name="create"></ion-icon>
+        </ion-card-header>
+        <ion-card-content >
+            
+        </ion-card-content>
+        </ion-card>
+      
+      <ion-card class="two">
+       <ion-list>
+         <ion-item>
+            Rutinas
+         </ion-item>
+         <ion-item>
+           Datos 
+          </ion-item>
+          <ion-item>
+             Estadisticas
+             </ion-item>
+       </ion-list>
+      </ion-card>
+</ion-content>
+ 
 
-<ion-content></ion-content>
+
+
+  

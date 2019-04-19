@@ -9,30 +9,27 @@
       </ion-buttons>
     </ion-toolbar>
 </ion-header>
-
-<ion-content class="back">
+<ion-content >
     <ion-card class="one">
         <ion-card-header>
           <ion-card-subtitle>Entrenador</ion-card-subtitle>
-          <ion-card-title>Nombre </ion-card-title>
+          <ion-card-title id="nombre"  *ngFor="let nombre of nombre">{{nombre}} </ion-card-title>
           <img src="../../assets/Perfil.jpeg">
+          <p class="star"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon></p>
+          <ion-icon  class="edit" name="create"></ion-icon>
         </ion-card-header>
-      
-        <ion-card-content>
-          Soy entrenadro blah blah  blah blah  blah blah  
-          blah blah blah blah blah blah blah blah blah blah 
-          blah blah  blah blah  blah blah  blah blah 
+        <ion-card-content *ngFor="let desc of descrip">
+            {{desc}} 
         </ion-card-content>
         </ion-card>
       
-      <ion-card class="one">
-        <ion-item>
-          <ion-label>Opiniones</ion-label>
+      <ion-card class="two">
+        <ion-item *ngFor="let certificado of certificado">
+          <ion-label > Certificado <strong> {{certificado}} </strong></ion-label>
         </ion-item>
-        <ion-card-content>
-          lalalalalalalalala
-          lalalala 
-        </ion-card-content>
+        <ion-item *ngFor="let exp of exp" >
+          <ion-label>Tengo {{exp}} años de experiencia</ion-label>
+        </ion-item>
       </ion-card>
 </ion-content>
  

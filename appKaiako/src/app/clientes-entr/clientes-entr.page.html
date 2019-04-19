@@ -1,15 +1,30 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>KAIAKO</ion-title>
-    <ion-buttons routerLink = "/menu/notificaciones" slot="end">
-      <ion-icon size="large" name="notifications"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>KAIAKO</ion-title>
+      <ion-buttons routerLink = "/menu/notificaciones" slot="end">
+        <ion-icon size="large" name="notifications"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content >
+       <ion-card class="one">
+          <ion-list>
+              <ion-item ion-item *ngFor="let cliente of clientes">
+                 <div class="cliente" >
+                    <button class="boton">
+                        <strong>{{cliente}}</strong><ion-icon class="arrow" name="arrow-dropright-circle"></ion-icon>
+                       </button>
+                 </div>
+              </ion-item>
+            </ion-list>
+       </ion-card>
+      
 </ion-content>
+ 
+
+
+
+  
