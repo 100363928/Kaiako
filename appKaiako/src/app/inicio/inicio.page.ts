@@ -56,7 +56,7 @@ export class InicioPage implements OnInit {
       this.navCtrl.navigateForward('/dashboard');
     }, err => {
       this.errorMessage = err.message;
-    })
+    });
   }
  
   registrarEntrenador(){
