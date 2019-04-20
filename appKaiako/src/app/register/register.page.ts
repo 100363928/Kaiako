@@ -2,17 +2,32 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticateService } from '../services/authentication.service';
 import { NavController } from '@ionic/angular';
+import { Usuario } from '../services/todo.service';
+import { TodoService } from './../services/todo.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
+
+
 export class RegisterPage implements OnInit {
- 
+   
+  usuario:Usuario= {
+    nombre: '',
+    nombreUsr:'',
+    apellido:'',
+    email:''
+  }
+
+  saveData(){
+    this.todoService.addUsuario(this.usuario);
+  }
  
   validations_form: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
+  
  
   // mensajes de validacón
   validation_messages = {
@@ -29,7 +44,8 @@ export class RegisterPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private todoService: TodoService
   ) {}
  
   ngOnInit(){
@@ -65,7 +81,7 @@ export class RegisterPage implements OnInit {
        this.errorMessage = err.message;
        this.successMessage = "";
      })
-    
+     this.todoService.addUsuario(this.usuario);
   }
  
   goLoginPage(){

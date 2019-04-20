@@ -8,17 +8,17 @@
  
     <ion-item>
       <ion-label  position="floating" color="primary">Nombre</ion-label>
-      <ion-input type="text" formControlName="Nombre"></ion-input>
+      <ion-input type="text"  [(ngModel)]="usuario.nombre" formControlName="Nombre"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label  position="floating" color="primary">Apellidos</ion-label>
-      <ion-input type="text" formControlName="Apellidos"></ion-input>
+      <ion-input type="text"  [(ngModel)]="usuario.apellido" formControlName="Apellidos"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label  position="floating" color="primary">Nombre de usuario</ion-label>
-      <ion-input type="text" formControlName="NombreUsr"></ion-input>
+      <ion-input type="text"  [(ngModel)]="usuario.nombreUsr" formControlName="NombreUsr"></ion-input>
     </ion-item>
     
     <ion-item>
@@ -35,7 +35,7 @@
 
     <ion-item>
       <ion-label  position="floating" color="primary">Email</ion-label>
-      <ion-input type="text" formControlName="email"></ion-input>
+      <ion-input type="text" [(ngModel)]="usuario.email" formControlName="email"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.email">
