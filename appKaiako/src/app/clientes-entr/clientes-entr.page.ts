@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AnyTxtRecord } from 'dns';
 
 @Component({
   selector: 'app-clientes-entr',

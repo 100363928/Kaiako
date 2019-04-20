@@ -9,23 +9,43 @@
 
 <ion-content padding>
     <ion-list lines="full"> 
+      <label class="lbl" floating >Introduce tu nombre</label>
       <ion-item>
-        <ion-input required type="text" placeholder="Introduce tu nombre" [(ngModel)]="solicitud.nombre"></ion-input>
+        <ion-input required type="text"  [(ngModel)]="solicitud.nombre" ></ion-input>
       </ion-item>
+      <label class="lbl" floating >Peso</label>
       <ion-item>
         <ion-input required type="number" placeholder="¿Cuánto pesas?" [(ngModel)]="solicitud.peso"></ion-input>
       </ion-item>
+      <label class="lbl" floating >Altura</label>
       <ion-item>
         <ion-input required type="number" placeholder="¿Cuánto mides?" [(ngModel)]="solicitud.altura"></ion-input>
       </ion-item>
       <ion-item>
-          <ion-input required type="number" placeholder="¿Cuántos días a la semana quieres entrenar?" [(ngModel)]="solicitud.dias"></ion-input>
+          <ion-label class="lbl">Dias para entrenar</ion-label>
+          <ion-select [(ngModel)]="solicitud.dias">
+              <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+              <ion-select-option value="3">3</ion-select-option>
+              <ion-select-option value="4">4</ion-select-option>
+              <ion-select-option value="5">5</ion-select-option>
+              <ion-select-option value="6">6</ion-select-option>
+              <ion-select-option value="7">7</ion-select-option>
+          </ion-select>
       </ion-item>
       <ion-item>
-        <ion-input required type="text" palceholder="¿Cuál es tu objetivo con los entrenamientos?" [(ngModel)]="solicitud.objetivo"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input type="text" placeholder="Introduce opcionalmente un mensaje para el entrenador" [(ngModel)]="solicitud.mensaje"></ion-input>
+          <ion-label class="lbl">Objetivo</ion-label>
+          <ion-select [(ngModel)]="solicitud.objetivo">
+              <ion-select-option value="Mejorar condición física">Mejorar condición física</ion-select-option>
+              <ion-select-option value="Definición">Definición</ion-select-option>
+              <ion-select-option value="Perder Peso">Perder Peso</ion-select-option>
+              <ion-select-option value="Aumentar masa muscular">Aumentar masa muscular</ion-select-option>
+              <ion-select-option value="Mantenimiento">Mantenimiento</ion-select-option>
+          </ion-select>
+       </ion-item>
+      <label class="lbl" floating >Mensaje para el entrenador</label>
+      <ion-item id="comentario">
+        <ion-textarea class="txtarea"type="text"  placeholder="Introduce opcionalmente un mensaje para el entrenador" [(ngModel)]="solicitud.mensaje"></ion-textarea>
       </ion-item> 
     </ion-list>
     <ion-button class="submit-btn" (click)="saveTodo()">Enviar Solicitud</ion-button>
