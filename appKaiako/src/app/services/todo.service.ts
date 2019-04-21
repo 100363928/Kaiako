@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { defineBase } from '@angular/core/src/render3';
 import * as firebase from 'firebase/app';
+import { of } from 'rxjs';
 
 export interface Solicitud {
   key?: string;
@@ -14,6 +14,8 @@ export interface Solicitud {
   objetivo: string;
   mensaje: string;
 }
+
+
 
 export interface Usuario {
   key?: string;
@@ -31,27 +33,29 @@ export class TodoService {
   private solicitudes: Observable<Solicitud[]>;
   private usuariosCollection: AngularFirestoreCollection<Usuario>;
   private usuarios: Observable<Usuario[]>;
-
+  private db: AngularFirestore;
+  
   constructor(db: AngularFirestore) { 
-    this.solicitudesCollection = db.collection<Solicitud>('solicitudes');
-    this.usuariosCollection = db.collection<Usuario>('clientes');
-
-    this.solicitudes = this.solicitudesCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          console.log(id);
-          return { id, ...data};
-        });
-      })
-    );
   }
-
+  /*
+   solLista: Solicitud[];
+   
+    solicitud:Solicitud={
+        key: ' ',
+      nombre: ' ',
+      altura: 0,
+      peso: 0,
+      dias: 0,
+      objetivo: ' ',
+      mensaje: ' ',
+    }
+   
+   
   getSolicitudes() {
     console.log(this.solicitudes);
     return this.solicitudes;
   }
+
 
   getSolicitud(id) {
     // creo que deberia de ser asi:
@@ -59,6 +63,28 @@ export class TodoService {
     //this.solicitudesCollection.doc<Solicitud>(id).valueChanges();
     return this.solicitudesCollection.doc<Solicitud>(id).valueChanges();
   }
+ /*
+   getSol (){
+    this.solLista=[];
+    var colSol = firebase.firestore().collection('usuarios').doc(firebase.auth().currentUser.uid).collection('solicitudes');
+     colSol.get().then((snapshot)=>{
+       snapshot.docs.forEach(doc =>{
+          console.log("Nombre doc "+ doc.data().nombre);
+          this.solicitud.key= doc.data().key;
+          this.solicitud.nombre= doc.data().nombre;
+          this.solicitud.altura= doc.data().altura;
+          this.solicitud.peso= doc.data().peso;
+          this.solicitud.dias= doc.data().dias;
+         this.solicitud.objetivo= doc.data().objetivo;
+         this.solicitud.mensaje= doc.data().mensaje;
+        this.solLista.push(this.solicitud);
+        console.log("Tamano "+this.solLista.length);
+       }) 
+     })
+     console.log("Tamano "+this.solLista.length);
+     return  of(this.solLista);
+  }
+ */
 
   updateSolicitud(solicitud: Solicitud, id: string) {
     // return this.solicitudesCollection.doc(id).update(solicitud);
@@ -69,19 +95,14 @@ export class TodoService {
   addSolicitud(solicitud: Solicitud){
     //return this.solicitudesCollection.add(solicitud);
     //return this.usuariosCollection.doc(firebase.auth().currentUser.uid).collection('solicitudes').doc(firebase.auth().currentUser.uid).set(solicitud);
-    return this.solicitudesCollection.add(solicitud);
+    var colSol = firebase.firestore().collection('usuarios').doc(firebase.auth().currentUser.uid).collection('solicitudes');
+    return colSol.add(solicitud);
   }
 
   removeSolicitud(id){
     //return this.solicitudesCollection.doc(id).delete();
     // return this.usuariosCollection.doc(firebase.auth().currentUser.uid).collection('solicitudes').doc(firebase.auth().currentUser.uid).delete();
-    return this.solicitudesCollection.doc(id).delete();
-  }
-
-  addUsuario(usuario:Usuario){
-    var db: AngularFirestore;
-    this.usuariosCollection.doc(firebase.auth().currentUser.uid).set(usuario);
-    return this.usuariosCollection.doc(firebase.auth().currentUser.uid).set(usuario);
+    return firebase.firestore().collection('usuarios').doc(firebase.auth().currentUser.uid).collection('solicitudes').doc(id).delete();
   }
 
   removeUsuario(id){
