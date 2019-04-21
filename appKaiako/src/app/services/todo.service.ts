@@ -36,8 +36,21 @@ export class TodoService {
   private db: AngularFirestore;
   
   constructor(db: AngularFirestore) { 
+    this.usuariosCollection= db.collection<Usuario>('usuarios');
+    this.usuarios = this.usuariosCollection.snapshotChanges()
+   .pipe(
+     map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        console.log(id);
+         return { id, ...data};
+       });
+    })
+  );
   }
-  /*
+
+  
    solLista: Solicitud[];
    
     solicitud:Solicitud={
@@ -52,39 +65,28 @@ export class TodoService {
    
    
   getSolicitudes() {
-    console.log(this.solicitudes);
+    this.solicitudesCollection = this.usuariosCollection.doc<Usuario>(firebase.auth().currentUser.uid).collection<Solicitud>('solicitudes');
+    this.solicitudes = this.solicitudesCollection.snapshotChanges()
+    .pipe(
+      map(actions => {
+       return actions.map(a => {
+         const data = a.payload.doc.data();
+         const id = a.payload.doc.id;
+         console.log(" OLLAAAASDS "+ id);
+         console.log(data);
+          return { id, ...data};
+        });
+     })
+   );
     return this.solicitudes;
   }
 
 
   getSolicitud(id) {
-    // creo que deberia de ser asi:
-    //this.usuariosCollection.doc(firebase.auth().currentUser.uid).collection('solicitudes').doc(firebase.auth().currentUser.uid).valueChanges();
-    //this.solicitudesCollection.doc<Solicitud>(id).valueChanges();
+ 
     return this.solicitudesCollection.doc<Solicitud>(id).valueChanges();
   }
- /*
-   getSol (){
-    this.solLista=[];
-    var colSol = firebase.firestore().collection('usuarios').doc(firebase.auth().currentUser.uid).collection('solicitudes');
-     colSol.get().then((snapshot)=>{
-       snapshot.docs.forEach(doc =>{
-          console.log("Nombre doc "+ doc.data().nombre);
-          this.solicitud.key= doc.data().key;
-          this.solicitud.nombre= doc.data().nombre;
-          this.solicitud.altura= doc.data().altura;
-          this.solicitud.peso= doc.data().peso;
-          this.solicitud.dias= doc.data().dias;
-         this.solicitud.objetivo= doc.data().objetivo;
-         this.solicitud.mensaje= doc.data().mensaje;
-        this.solLista.push(this.solicitud);
-        console.log("Tamano "+this.solLista.length);
-       }) 
-     })
-     console.log("Tamano "+this.solLista.length);
-     return  of(this.solLista);
-  }
- */
+ 
 
   updateSolicitud(solicitud: Solicitud, id: string) {
     // return this.solicitudesCollection.doc(id).update(solicitud);
