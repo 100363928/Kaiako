@@ -70,8 +70,9 @@ export class RegisterPage implements OnInit {
     });
   }
  
-  tryRegister(value){
-    this.authService.registerUser(value)
+  tryRegister(value,tipo:string){
+    var tipo ="cliente";
+    var hola = this.authService.registerUser(value,tipo)
      .then(res => {
        console.log(res);
        this.errorMessage = "";
@@ -81,7 +82,6 @@ export class RegisterPage implements OnInit {
        this.errorMessage = err.message;
        this.successMessage = "";
      })
-     this.todoService.addUsuario(this.usuario);
   }
  
   goLoginPage(){

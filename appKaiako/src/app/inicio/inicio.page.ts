@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
+import { TodoService } from './../services/todo.service';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-inicio',
@@ -17,7 +19,8 @@ export class InicioPage implements OnInit {
  
     private navCtrl: NavController,
     private authService: AuthenticateService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private todoService: TodoService
  
   ) { }
  
@@ -57,6 +60,19 @@ export class InicioPage implements OnInit {
     }, err => {
       this.errorMessage = err.message;
     });
+   //
+   const firestore = firebase.firestore();
+       firestore.collection('registro').doc(value.email).get().then(function (doc) {
+       if (doc && doc.exists) {
+        var data = doc.data();
+        // saves the data to 'name'
+        firestore.collection('usuarios').doc(firebase.auth().currentUser.uid).set(data)
+        firestore.collection('registro').doc(value.email).delete();
+    }
+});
+
+
+   //
   }
  
   registrarEntrenador(){

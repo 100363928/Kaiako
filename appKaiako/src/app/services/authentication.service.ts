@@ -3,27 +3,36 @@ import * as firebase from 'firebase/app';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Usuario } from '../services/todo.service';
+import { TodoService } from './../services/todo.service';
+
 
 @Injectable()
 export class AuthenticateService {
-   
-  constructor(){
+  
+  usuario:Usuario= {
+    nombre: '',
+    nombreUsr:'',
+    apellido:'',
+    email:''
+  }
+  constructor( private todoService: TodoService){
     
   }
   
-  registerUser(value){
+  registerUser(value,tipo:string){
    return new Promise<any>((resolve, reject) => {
      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
      .then(
        res => resolve(res),
-       err => reject(err))
-       var uid = firebase.auth().currentUser.uid;
-      // firebase.firestore().collection("usuarios").doc(firebase.auth().currentUser.uid).set({
-      //  key: firebase.auth().currentUser.uid,
-      //  email:value.email,
-    //})
-  
-
+       err => reject(err)) // The UID of recently created user on firebase
+       firebase.firestore().collection('registro').doc(value.email).set({
+       nombre:value.Nombre,
+       email:value.email,
+       nombreUsr:value.NombreUsr,
+       apellido:value.Apellidos,
+       contraseña:value.password,
+       tipo:tipo
+       })
    })
   }
  
@@ -34,7 +43,9 @@ export class AuthenticateService {
      .then(
        res => resolve(res),
        err => reject(err))
+       console.log("UID CURRENT"+ firebase.auth().currentUser.uid);
    })
+   
   }
  
   logoutUser(){
