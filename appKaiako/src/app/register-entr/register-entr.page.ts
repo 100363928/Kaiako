@@ -55,8 +55,9 @@ export class RegisterEntrPage implements OnInit {
       });
     }
     
-    tryRegister(value){
-      this.authService.registerUser(value)
+    tryRegister(value,tipo:string){
+      var tipo ="entrenador";
+      this.authService.registerUser(value,tipo)
        .then(res => {
          console.log(res);
          this.errorMessage = "";
