@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Solicitud,Usuario, TodoService } from './../services/todo.service';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-explora',
   templateUrl: './explora.page.html',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExploraPage implements OnInit {
   anuncio: Array<Object>
-  constructor() { 
+  constructor(private todoService:TodoService,private lc:LoadingController) { 
   this.anuncio=[
     { nombre:'Cardio', descr:'ejercicios nuevos',img: '/assets/anun2.jpeg'},
     { nombre:'Brazo', descr:'Rutina ganadora',img: 'assets/anun0.png'},
@@ -15,8 +16,14 @@ export class ExploraPage implements OnInit {
   ]
 
   }
+  anunci: Usuario[];
 
   ngOnInit() {
+      this.todoService.getEntrenadores().subscribe(res => {
+       console.log(res);
+      console.log("Pidiendo solicitudes");
+     this.anunci = res;
+     });
   }
 
 }

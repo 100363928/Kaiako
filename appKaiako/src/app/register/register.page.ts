@@ -20,9 +20,7 @@ export class RegisterPage implements OnInit {
     email:''
   }
 
-  saveData(){
-    this.todoService.addUsuario(this.usuario);
-  }
+  
  
   validations_form: FormGroup;
   errorMessage: string = '';
