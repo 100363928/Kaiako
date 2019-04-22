@@ -16,16 +16,16 @@ export class AceptarSolicitudPage implements OnInit {
   
   solicitudes: Solicitud[];
   solicitud:Solicitud={
-    key: ' ',
-  nombre: ' ',
-  altura: 0,
-  peso: 0,
-  dias: 0,
-  objetivo: ' ',
-  mensaje: ' ',
-  solicitante:' ',
-  entrenador:''
-}
+      key: ' ',
+    nombre: ' ',
+    altura: 0,
+    peso: 0,
+    dias: 0,
+    objetivo: ' ',
+    mensaje: ' ',
+    solicitante:' ',
+    entrenador:''
+  }
  
   constructor(private todoService: TodoService, private lc:LoadingController, private db:AngularFirestore) {
   }
@@ -36,11 +36,11 @@ export class AceptarSolicitudPage implements OnInit {
       message: 'Cargandouuu datooos'
      });
      await loading.present();
-       loading.dismiss();
+      loading.dismiss();
       this.todoService.getSolicitudes().subscribe(res => {
-       console.log(res);
-      console.log("Pidiendo solicitudes");
-     this.solicitudes = res;
+        console.log(res);
+        console.log("Pidiendo solicitudes");
+        this.solicitudes = res;
      });
   }
 

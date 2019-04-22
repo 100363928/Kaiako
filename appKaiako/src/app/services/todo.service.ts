@@ -38,12 +38,11 @@ export class TodoService {
   private usuarios: Observable<Usuario[]>;
   private entrenadorCollection: AngularFirestoreCollection<Usuario>;
   private entrenadores: Observable<Usuario[]>;
-  private db: AngularFirestore;
   
-  constructor(db: AngularFirestore) { 
-    this.usuariosCollection= db.collection<Usuario>('usuarios');
-    this.entrenadorCollection= db.collection<Usuario>('/usuarios', ref => ref.where('tipo','==','entrenador'));
-    this.solicitudesCollection = db.collection<Solicitud>('solicitudes')
+  constructor(private db: AngularFirestore) { 
+    this.usuariosCollection= this.db.collection<Usuario>('usuarios');
+    this.entrenadorCollection= this.db.collection<Usuario>('/usuarios', ref => ref.where('tipo','==','entrenador'));
+    this.solicitudesCollection = this.db.collection<Solicitud>('solicitudes');
     // todos Los usuarios
     this.usuarios = this.usuariosCollection.snapshotChanges()
    .pipe(
@@ -62,7 +61,8 @@ export class TodoService {
  
    
   getSolicitudes() {
-    this.solicitudesCollection.ref.where('entrenador','==',firebase.auth().currentUser.uid);
+    this.solicitudesCollection = this.db.collection<Solicitud>
+    ('solicitudes', ref => ref.where('entrenador', '==', firebase.auth().currentUser.uid));
     this.solicitudes = this.solicitudesCollection.snapshotChanges()
     .pipe(
       map(actions => {
@@ -100,7 +100,7 @@ export class TodoService {
   removeSolicitud(id){
     //return this.solicitudesCollection.doc(id).delete();
     // return this.usuariosCollection.doc(firebase.auth().currentUser.uid).collection('solicitudes').doc(firebase.auth().currentUser.uid).delete();
-    return firebase.firestore().collection('usuarios').doc(firebase.auth().currentUser.uid).collection('solicitudes').doc(id).delete();
+    return firebase.firestore().collection('solicitudes').doc(id).delete();
   }
 
   getEntrenadores(){
@@ -120,7 +120,7 @@ export class TodoService {
 
   getEntrenador(id){
   
-    return this.entrenadorCollection.doc<Usuario>(id).valueChanges();;
+    return this.entrenadorCollection.doc<Usuario>(id).valueChanges();
   }
 
   removeUsuario(id){
