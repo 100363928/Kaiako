@@ -65,7 +65,6 @@ export class InicioPage implements OnInit {
        firestore.collection('registro').doc(value.email).get().then(function (doc) {
        if (doc && doc.exists) {
         var data = doc.data();
-        // saves the data to 'name'
         firestore.collection('usuarios').doc(firebase.auth().currentUser.uid).set(data)
         firestore.collection('registro').doc(value.email).delete();
     }

@@ -24,4 +24,10 @@ export class Tab1Page {
    this.entrenador = res;
    });
 }
+
+  //UID entrenador de ver mas
+  verMas(entrenador){
+    console.log(entrenador.id);
+    return entrenador
+  }
 }

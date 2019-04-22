@@ -23,6 +23,8 @@ export class AceptarSolicitudPage implements OnInit {
   dias: 0,
   objetivo: ' ',
   mensaje: ' ',
+  solicitante:' ',
+  entrenador:''
 }
  
   constructor(private todoService: TodoService, private lc:LoadingController, private db:AngularFirestore) {

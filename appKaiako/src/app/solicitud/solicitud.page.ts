@@ -12,6 +12,8 @@ import * as firebase from 'firebase/app';
 })
 export class SolicitudPage implements OnInit {
 
+  entrenadorId = null;
+
   solicitud: Solicitud = { 
     key: '1',
     nombre: 'prueba',
@@ -21,7 +23,7 @@ export class SolicitudPage implements OnInit {
     objetivo: "Ejercicio",
     mensaje: "Un usuario quiere que le entrenes",
     solicitante: firebase.auth().currentUser.uid,
-    entrenador:''
+    entrenador: this.entrenadorId 
   };
 
   solicitudId = null;
@@ -30,6 +32,7 @@ export class SolicitudPage implements OnInit {
      private todoService: TodoService, private loadingController: LoadingController){}
 
   ngOnInit() {
+    this.entrenadorId = this.route.snapshot.params['id'];
     this.solicitudId = firebase.auth().currentUser;
     console.log(this.solicitudId);
   }

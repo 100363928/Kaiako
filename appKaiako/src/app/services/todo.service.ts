@@ -62,7 +62,7 @@ export class TodoService {
  
    
   getSolicitudes() {
-    this.solicitudesCollection.ref.where('solicitante','==',firebase.auth().currentUser.uid);
+    this.solicitudesCollection.ref.where('entrenador','==',firebase.auth().currentUser.uid);
     this.solicitudes = this.solicitudesCollection.snapshotChanges()
     .pipe(
       map(actions => {
@@ -80,7 +80,6 @@ export class TodoService {
   }
 
   getSolicitud(id) {
- 
     return this.solicitudesCollection.doc<Solicitud>(id).valueChanges();
   }
  
@@ -118,6 +117,12 @@ export class TodoService {
  );
     return this.entrenadores;
   }
+
+  getEntrenador(id){
+  
+    return this.entrenadorCollection.doc<Usuario>(id).valueChanges();;
+  }
+
   removeUsuario(id){
     return this.usuariosCollection.doc(id).delete();
   }

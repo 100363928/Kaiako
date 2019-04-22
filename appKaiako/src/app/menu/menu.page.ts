@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
+import {AuthenticateService} from '../services/authentication.service';
+import { NavController } from '@ionic/angular';
+import { TodoService } from './../services/todo.service';
 
 @Component({
   selector: 'app-menu',
@@ -24,7 +27,7 @@ export class MenuPage implements OnInit {
 
   selectedPath = '';
 
-  constructor(private router: Router) { 
+  constructor(private router: Router, private authService : AuthenticateService,private todo: TodoService ,private navCtrl: NavController,) { 
     this.router.events.subscribe((event: RouterEvent) => {
       if (event && event.url) {
         this.selectedPath = event.url;
@@ -33,6 +36,11 @@ export class MenuPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  logOut(){
+   
+    this.navCtrl.navigateBack('/inicio');
   }
 
 }

@@ -20,7 +20,15 @@ const routes: Routes = [
         loadChildren: '../ver-entrenador/ver-entrenador.module#VerEntrenadorPageModule'
       },
       {
+        path: 'tab1/ver-entrenador/:id',
+        loadChildren: '../ver-entrenador/ver-entrenador.module#VerEntrenadorPageModule'
+      },
+      {
         path: 'tab1/ver-entrenador/solicitud',
+        loadChildren: '../solicitud/solicitud.module#SolicitudPageModule'
+      },
+      {
+        path: 'tab1/ver-entrenador/solicitud/:id',
         loadChildren: '../solicitud/solicitud.module#SolicitudPageModule'
       },
       {

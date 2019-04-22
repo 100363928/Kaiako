@@ -17,7 +17,8 @@ export class RegisterPage implements OnInit {
     nombre: '',
     nombreUsr:'',
     apellido:'',
-    email:''
+    email:'',
+    tipo:''
   }
 
   

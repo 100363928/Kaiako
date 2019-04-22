@@ -16,14 +16,10 @@ export class ExploraPage implements OnInit {
   ]
 
   }
-  anunci: Usuario[];
+ 
 
   ngOnInit() {
-      this.todoService.getEntrenadores().subscribe(res => {
-       console.log(res);
-      console.log("Pidiendo solicitudes");
-     this.anunci = res;
-     });
+    
   }
 
 }

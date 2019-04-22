@@ -12,7 +12,7 @@
             {{ p.title }}
           </ion-item>
         </ion-menu-toggle>
-        <ion-item tappable routerLink="/inicio" routerDirection="root">
+        <ion-item tappable  (click)="logOut()" routerDirection="root">
           <ion-icon name="log-out" slot="start"></ion-icon>
           Cerrar sesión
         </ion-item>
