@@ -13,6 +13,8 @@ export interface Solicitud {
   dias: number;
   objetivo: string;
   mensaje: string;
+  solicitante:string;
+  entrenador:string;
 }
 
 
@@ -23,6 +25,7 @@ export interface Usuario {
   nombreUsr:string;
   apellido:string;
   email:string;
+  tipo: string;
 }
 
 @Injectable({
@@ -40,6 +43,7 @@ export class TodoService {
   constructor(db: AngularFirestore) { 
     this.usuariosCollection= db.collection<Usuario>('usuarios');
     this.entrenadorCollection= db.collection<Usuario>('/usuarios', ref => ref.where('tipo','==','entrenador'));
+    this.solicitudesCollection = db.collection<Solicitud>('solicitudes')
     // todos Los usuarios
     this.usuarios = this.usuariosCollection.snapshotChanges()
    .pipe(
@@ -55,21 +59,10 @@ export class TodoService {
   }
 
 
-   solLista: Solicitud[];
-   
-    solicitud:Solicitud={
-        key: ' ',
-      nombre: ' ',
-      altura: 0,
-      peso: 0,
-      dias: 0,
-      objetivo: ' ',
-      mensaje: ' ',
-    }
-   
+ 
    
   getSolicitudes() {
-    this.solicitudesCollection = this.usuariosCollection.doc<Usuario>(firebase.auth().currentUser.uid).collection<Solicitud>('solicitudes');
+    this.solicitudesCollection.ref.where('solicitante','==',firebase.auth().currentUser.uid);
     this.solicitudes = this.solicitudesCollection.snapshotChanges()
     .pipe(
       map(actions => {
@@ -82,6 +75,7 @@ export class TodoService {
         });
      })
    );
+   
     return this.solicitudes;
   }
 
@@ -100,7 +94,7 @@ export class TodoService {
   addSolicitud(solicitud: Solicitud){
     //return this.solicitudesCollection.add(solicitud);
     //return this.usuariosCollection.doc(firebase.auth().currentUser.uid).collection('solicitudes').doc(firebase.auth().currentUser.uid).set(solicitud);
-    var colSol = firebase.firestore().collection('usuarios').doc(firebase.auth().currentUser.uid).collection('solicitudes');
+    var colSol = this.solicitudesCollection;
     return colSol.add(solicitud);
   }
 

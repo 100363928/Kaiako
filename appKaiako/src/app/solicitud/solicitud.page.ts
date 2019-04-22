@@ -19,7 +19,9 @@ export class SolicitudPage implements OnInit {
     altura: 1,
     dias: 1,
     objetivo: "Ejercicio",
-    mensaje: "Un usuario quiere que le entrenes"
+    mensaje: "Un usuario quiere que le entrenes",
+    solicitante: firebase.auth().currentUser.uid,
+    entrenador:''
   };
 
   solicitudId = null;
