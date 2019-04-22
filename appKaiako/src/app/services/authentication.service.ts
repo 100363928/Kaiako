@@ -13,8 +13,7 @@ export class AuthenticateService {
     nombre: '',
     nombreUsr:'',
     apellido:'',
-    email:'',
-    tipo:''
+    email:''
   }
   constructor( private todoService: TodoService){
     
