@@ -8,21 +8,34 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  entrenadorr: Array<Object>
-  constructor(private todoService:TodoService,private lc:LoadingController) { 
-  this.entrenadorr=[
-    { nombre:'Pepe Morat', descr:'Running',img: '/assets/Perfil.jpeg'},
-    { nombre:'Juan Tequila', descr:'Gym',img: 'assets/Perfil.jpeg'},
-    { nombre:'Javier Pompa', descr:'Gym',img: 'assets/Perfil.jpeg'},
-  ]
-  }
   entrenador: Usuario[];
+  entrFiltered: Usuario[];
+  constructor(private todoService:TodoService,private lc:LoadingController) { 
+    this.initializeItems();
+  }
+
   ngOnInit() {
     this.todoService.getEntrenadores().subscribe(res => {
      console.log(res);
     console.log("Pidiendo entrenadores");
    this.entrenador = res;
    });
+}
+
+initializeItems(){
+  this.entrFiltered = this.entrenador;
+
+}
+getEntrenadores(ev: any){
+  //Inicializar de nuevo el array en caso de que haya cambiado algo
+  this.initializeItems();
+  let val = ev.target.value;
+
+  if(val && val.trim() != ''){
+    this.entrFiltered = this.entrenador.filter((ev) => {
+      return (ev.nombre.toLowerCase().indexOf(val.toLowerCase()) > -1);
+    })
+  }
 }
 
   //UID entrenador de ver mas
