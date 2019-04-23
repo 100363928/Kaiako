@@ -20,8 +20,11 @@
         <p>
             
         </p>
-        <p class="star"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon></p>
-        <ion-button size="small" expand="block" routerLink="/menu/tabs/tabs/tab1/ver-entrenador" routerDirection="forward">
+        <p class="star">
+            <ion-icon name="star" *ngFor="let number of arrayOne(entrenador.numEstrellas)"></ion-icon>
+            <ion-icon name="star-outline" *ngFor="let number of arrayTwo(entrenador.numEstrellas)"></ion-icon>
+        </p>
+        <ion-button size="small" expand="block" [routerLink]="['/menu/tabs/tabs/tab1/ver-entrenador', entrenador.id]" routerDirection="forward">
           Ver Mas
         </ion-button>
     </ion-card>

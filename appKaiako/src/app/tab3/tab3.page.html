@@ -12,10 +12,10 @@
 <ion-content >
     <ion-card class="one">
         <ion-card-header>
-          <ion-card-subtitle *ngFor="let usuario of usuario">{{usuario}}</ion-card-subtitle>
-          <ion-card-title id="nombre"  *ngFor="let nombre of nombre">{{nombre}} </ion-card-title>
+          <ion-card-subtitle> Usuario </ion-card-subtitle>
+          <ion-card-title id="nombre"> {{ usuario.nombre}} </ion-card-title>
           <img src="../../assets/Perfil.jpeg">
-          <p style="text-align: center" *ngFor="let desc of descrip">{{desc}} pts Kaiako </p>
+          <p style="text-align: center">{{ usuario.puntuacion }} pts Kaiako </p>
           <ion-icon  class="edit" name="create"></ion-icon>
         </ion-card-header>
         <ion-card-content >

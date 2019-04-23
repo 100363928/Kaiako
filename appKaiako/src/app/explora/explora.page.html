@@ -13,9 +13,9 @@
 <ion-content>
     <ion-searchbar placeholder="Busca rutinas y ejercicios" showCancelButton debounce = 0.5
                   (ionInput)= "getAnuncios($event)">
-    </ion-searchbar>>
+    </ion-searchbar>
     <ion-card class="card" *ngFor="let anuncio of anuncioFiltered">
-        <ion-card-title id="nombre">{{anuncio.nombre}} </ion-card-title>
+        <ion-card-title id="nombre"> {{anuncio.nombre}} </ion-card-title>
         <div id="im">
             <img [src]="anuncio.img">
         </div>

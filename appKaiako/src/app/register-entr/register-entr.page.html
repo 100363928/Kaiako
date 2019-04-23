@@ -46,7 +46,7 @@
       </div>
 
       <ion-item>
-        <ion-label class="lbl">Años de experiencia</ion-label>
+        <ion-label position="floating" color="primary" class="lbl">Años de experiencia</ion-label>
         <ion-select formControlName="anosExperiencia">
             <ion-select-option value="1">1</ion-select-option>
             <ion-select-option value="2">2</ion-select-option>
@@ -62,16 +62,16 @@
       </ion-item>
 
       <ion-item>
-        <ion-label class="lbl">Certificado de enternador</ion-label>
+        <ion-label position="floating" color="primary" class="lbl">Certificado de enternador</ion-label>
         <ion-select formControlName="certificado">
-            <ion-select-option value="Mejorar condición física">CAFD</ion-select-option>
-            <ion-select-option value="Definición">TAFAD</ion-select-option>
-            <ion-select-option value="Perder Peso">NSCA</ion-select-option>           
+            <ion-select-option value="CAFD">CAFD</ion-select-option>
+            <ion-select-option value="TAFAD">TAFAD</ion-select-option>
+            <ion-select-option value="NSCA">NSCA</ion-select-option>           
         </ion-select>
      </ion-item>
 
-     <label class="lbl" floating>Descríbete</label>
-     <ion-item id="comentario">
+     <ion-item id="c">
+      <ion-label class="lbl" id="t" position="floating" color="primary">Descríbete</ion-label>
       <ion-textarea class="txtarea"type="text"  placeholder="Introduce opcionalmente un mensaje para el entrenador" formControlName="descripcion"></ion-textarea>
      </ion-item> 
 

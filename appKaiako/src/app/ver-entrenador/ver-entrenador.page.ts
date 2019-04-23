@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
-import { TodoService,Usuario } from './../services/todo.service';
+import { TodoService, Usuario } from './../services/todo.service';
 
 @Component({
   selector: 'app-ver-entrenador',
@@ -9,34 +9,24 @@ import { TodoService,Usuario } from './../services/todo.service';
   styleUrls: ['./ver-entrenador.page.scss'],
 })
 export class VerEntrenadorPage implements OnInit {
-  nombre:any;
-  descrip:any;
-  certificado:any;
-  exp:any;
-   entrenadorId = null;
 
-   entrenador:Usuario= {
+ entrenadorId = null;
+ numbers = [];
+ numbersVacios = [];
+
+ entrenador: Usuario = {
     nombre: '',
-    nombreUsr:'',
-    apellido:'',
-    email:'',
-    tipo:''
+    nombreUsr: '',
+    apellido: '',
+    email: '',
+    tipo: '',
+    certificado: '',
+    anosExperiencia: '',
+    numEstrellas: 0,
+    descripcion: ''
   }
 
-  constructor(private route: ActivatedRoute,private todoService: TodoService,private loadingController: LoadingController) { 
-      this.nombre = [
-        'Pedro Pomm'
-      ]
-      this.descrip = [
-        'Soy tal y tal y hago tal y tal y me gusta mucho el helado'
-      ]
-      this.certificado = [
-        'CAFIT'
-      ]
-      this.exp = [
-        '5'
-      ];
-  }
+  constructor(private route: ActivatedRoute,private todoService: TodoService,private loadingController: LoadingController) {}
 
   ngOnInit() {
     this.entrenadorId = this.route.snapshot.params['id'];
@@ -54,6 +44,8 @@ export class VerEntrenadorPage implements OnInit {
     this.todoService.getEntrenador(this.entrenadorId).subscribe(res => {
       loading.dismiss();
       this.entrenador = res;
+      this.numbers = Array(res.numEstrellas).fill(0).map((x, i) => i);
+      this.numbersVacios = Array(5 - res.numEstrellas).fill(0).map((x, i) => i);
     });
   }
 

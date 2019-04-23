@@ -15,22 +15,20 @@ export class AceptarSolicitudPage implements OnInit {
   private solici: Observable<Solicitud[]>;
   
   solicitudes: Solicitud[];
-  solicitud:Solicitud={
-      key: ' ',
+  solicitud: Solicitud = {
+    key: ' ',
     nombre: ' ',
     altura: 0,
     peso: 0,
     dias: 0,
     objetivo: ' ',
     mensaje: ' ',
-    solicitante:' ',
-    entrenador:''
+    solicitante: '',
+    entrenador: ''
   }
  
-  constructor(private todoService: TodoService, private lc:LoadingController, private db:AngularFirestore) {
-  }
-
-   
+  constructor(private todoService: TodoService, private lc: LoadingController, private db: AngularFirestore) {}
+  
   async ngOnInit() {
      const loading = await this.lc.create({
       message: 'Cargandouuu datooos'
@@ -39,7 +37,7 @@ export class AceptarSolicitudPage implements OnInit {
       loading.dismiss();
       this.todoService.getSolicitudes().subscribe(res => {
         console.log(res);
-        console.log("Pidiendo solicitudes");
+        console.log('Pidiendo solicitudes');
         this.solicitudes = res;
      });
   }

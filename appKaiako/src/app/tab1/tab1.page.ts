@@ -10,7 +10,10 @@ import { LoadingController } from '@ionic/angular';
 export class Tab1Page {
   entrenador: Usuario[];
   entrFiltered: Usuario[];
-  constructor(private todoService:TodoService,private lc:LoadingController) { 
+  numbers = [];
+  numbersVacios = [];
+
+  constructor(private todoService: TodoService, private lc: LoadingController) { 
     this.initializeItems();
   }
 
@@ -19,13 +22,22 @@ export class Tab1Page {
      console.log(res);
      console.log("Pidiendo entrenadores");
      this.entrenador = res;
+     this.entrFiltered = res;
    });
 }
 
 initializeItems(){
   this.entrFiltered = this.entrenador;
-
 }
+
+arrayOne(n: number): any[] {
+  return Array(n);
+}
+
+arrayTwo(n: number): any[] {
+  return Array(5 - n);
+}
+
 getEntrenadores(ev: any){
   //Inicializar de nuevo el array en caso de que haya cambiado algo
   this.initializeItems();

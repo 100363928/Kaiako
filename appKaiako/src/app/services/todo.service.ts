@@ -13,22 +13,28 @@ export interface Solicitud {
   dias: number;
   objetivo: string;
   mensaje: string;
-  solicitante:string;
-  entrenador:string;
+  solicitante: string;
+  entrenador: string;
 }
 
 export interface Usuario {
   key?: string;
   nombre: string;
-  nombreUsr:string;
-  apellido:string;
-  email:string;
+  nombreUsr: string;
+  apellido: string;
+  email: string;
   certificado?: string;
   descripcion?: string;
   anosExperiencia?: string;
   numEstrellas?: number;
   puntuacion?: number;
   tipo: string;
+}
+
+export interface Anuncio {
+  nombre: string;
+  img: string;
+  descr: string;
 }
 
 @Injectable({
@@ -41,7 +47,7 @@ export class TodoService {
   private usuarios: Observable<Usuario[]>;
   private entrenadorCollection: AngularFirestoreCollection<Usuario>;
   private entrenadores: Observable<Usuario[]>;
-  
+
   constructor(private db: AngularFirestore) { 
     this.usuariosCollection= this.db.collection<Usuario>('usuarios');
     this.entrenadorCollection= this.db.collection<Usuario>('/usuarios', ref => ref.where('tipo','==','entrenador'));
@@ -64,29 +70,30 @@ export class TodoService {
     this.solicitudesCollection = this.db.collection<Solicitud>
     ('solicitudes', ref => ref.where('entrenador', '==', firebase.auth().currentUser.uid));
   }
- 
-   
+
+
   getSolicitudes() {
+    this.initializeUser();
     this.solicitudes = this.solicitudesCollection.snapshotChanges()
     .pipe(
       map(actions => {
        return actions.map(a => {
          const data = a.payload.doc.data();
          const id = a.payload.doc.id;
-         console.log(" OLLAAAASDS "+ id);
+         console.log('OLLAAAASDS' + id);
          console.log(data);
           return { id, ...data};
         });
      })
    );
-   
+
     return this.solicitudes;
   }
 
   getSolicitud(id) {
     return this.solicitudesCollection.doc<Solicitud>(id).valueChanges();
   }
- 
+
 
   updateSolicitud(solicitud: Solicitud, id: string) {
     return  this.solicitudesCollection.doc(id).update(solicitud);
@@ -102,7 +109,7 @@ export class TodoService {
   }
 
   getEntrenadores(){
-    this.entrenadores=this.entrenadorCollection.snapshotChanges()
+    this.entrenadores = this.entrenadorCollection.snapshotChanges()
   .pipe(
     map(actions => {
      return actions.map(a => {
@@ -127,7 +134,7 @@ export class TodoService {
   updateUsuario(usuario: Usuario, id: string) {
     return this.usuariosCollection.doc(id).update(usuario);
   }
-  
+
   getUsuarios() {
     console.log(this.usuarios);
     return this.usuarios;
