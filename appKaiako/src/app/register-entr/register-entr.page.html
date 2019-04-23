@@ -46,10 +46,34 @@
       </div>
 
       <ion-item>
-          <ion-label  position="floating" color="primary">Años de Experiencia</ion-label>
-          <ion-input type="text" formControlName="años"></ion-input>
+        <ion-label class="lbl">Años de experiencia</ion-label>
+        <ion-select formControlName="anosExperiencia">
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="6">6</ion-select-option>
+            <ion-select-option value="7">7</ion-select-option>
+            <ion-select-option value="8">8</ion-select-option>
+            <ion-select-option value="9">9</ion-select-option>
+            <ion-select-option value="10">10 o más</ion-select-option>
+        </ion-select>
       </ion-item>
 
+      <ion-item>
+        <ion-label class="lbl">Certificado de enternador</ion-label>
+        <ion-select formControlName="certificado">
+            <ion-select-option value="Mejorar condición física">CAFD</ion-select-option>
+            <ion-select-option value="Definición">TAFAD</ion-select-option>
+            <ion-select-option value="Perder Peso">NSCA</ion-select-option>           
+        </ion-select>
+     </ion-item>
+
+     <label class="lbl" floating>Descríbete</label>
+     <ion-item id="comentario">
+      <ion-textarea class="txtarea"type="text"  placeholder="Introduce opcionalmente un mensaje para el entrenador" formControlName="descripcion"></ion-textarea>
+     </ion-item> 
 
       <div style="text-align:center" >
           <ion-button style="text-align:center"  class="submit-btn" type="submit" [disabled]="!validations_form.valid">Registrarse</ion-button>

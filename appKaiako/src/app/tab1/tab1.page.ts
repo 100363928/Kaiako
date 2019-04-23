@@ -20,8 +20,8 @@ export class Tab1Page {
   ngOnInit() {
     this.todoService.getEntrenadores().subscribe(res => {
      console.log(res);
-    console.log("Pidiendo entrenadores");
-   this.entrenador = res;
+     console.log("Pidiendo entrenadores");
+     this.entrenador = res;
    });
 }
 

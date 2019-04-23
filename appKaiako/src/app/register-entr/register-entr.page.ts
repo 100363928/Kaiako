@@ -1,3 +1,4 @@
+import { TodoService } from './../services/todo.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticateService } from '../services/authentication.service';
@@ -22,13 +23,14 @@ export class RegisterEntrPage implements OnInit {
     ],
     'password': [
       { type: 'required', message: 'Contraseña requerida.' },
-      { type: 'minlength', message: 'Contraseña tiene que ser de al menos 5 caracteres.' }
+      { type: 'minlength', message: 'Contraseña tiene que ser de al menos 6 carácteres.' }
     ]
   };
 
   constructor(private navCtrl: NavController,
     private authService: AuthenticateService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private todoService: TodoService) { }
 
     ngOnInit(){
       this.validations_form = this.formBuilder.group({
@@ -37,7 +39,7 @@ export class RegisterEntrPage implements OnInit {
           Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
         ])),
         password: new FormControl('', Validators.compose([
-          Validators.minLength(5),
+          Validators.minLength(6),
           Validators.required
         ])),
         Nombre: new FormControl('', Validators.compose([
@@ -49,9 +51,15 @@ export class RegisterEntrPage implements OnInit {
         NombreUsr: new FormControl('', Validators.compose([
           Validators.required
         ])),
-        años: new FormControl('', Validators.compose([
+        anosExperiencia: new FormControl('', Validators.compose([
           Validators.required
         ])),
+        certificado: new FormControl('', Validators.compose([
+          Validators.required
+        ])),
+        descripcion: new FormControl('', Validators.compose([
+          Validators.required
+        ]))
       });
     }
     

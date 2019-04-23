@@ -60,18 +60,16 @@ export class InicioPage implements OnInit {
     }, err => {
       this.errorMessage = err.message;
     });
-   //
-   const firestore = firebase.firestore();
-       firestore.collection('registro').doc(value.email).get().then(function (doc) {
-       if (doc && doc.exists) {
-        var data = doc.data();
-        firestore.collection('usuarios').doc(firebase.auth().currentUser.uid).set(data)
-        firestore.collection('registro').doc(value.email).delete();
-    }
-});
-
-
-   //
+    //
+    const firestore = firebase.firestore();
+    firestore.collection('registro').doc(value.email).get().then(function (doc) {
+      if (doc && doc.exists) {
+      var data = doc.data();
+      firestore.collection('usuarios').doc(firebase.auth().currentUser.uid).set(data)
+      firestore.collection('registro').doc(value.email).delete();
+      }
+    });
+    this.todoService.initializeUser();
   }
  
   registrarEntrenador(){

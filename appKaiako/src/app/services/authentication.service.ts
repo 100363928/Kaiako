@@ -20,20 +20,37 @@ export class AuthenticateService {
     
   }
   
-  registerUser(value,tipo:string){
+  registerUser(value, tipo: string){
    return new Promise<any>((resolve, reject) => {
      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
      .then(
        res => resolve(res),
        err => reject(err)) // The UID of recently created user on firebase
-       firebase.firestore().collection('registro').doc(value.email).set({
-       nombre:value.Nombre,
-       email:value.email,
-       nombreUsr:value.NombreUsr,
-       apellido:value.Apellidos,
-       contraseña:value.password,
-       tipo:tipo
-       })
+     if(tipo === 'entrenador'){
+      firebase.firestore().collection('registro').doc(value.email).set({
+        nombre: value.Nombre,
+        email: value.email,
+        nombreUsr: value.NombreUsr,
+        apellido: value.Apellidos,
+        contraseña: value.password,
+        tipo: tipo,
+        certificado: value.certificado,
+        anosExperiencia: value.anosExperiencia,
+        descripcion: value.descripcion,
+        numEstrellas: Math.floor(Math.random() * 5) + 1
+      })
+     }
+     else{
+      firebase.firestore().collection('registro').doc(value.email).set({
+        nombre: value.Nombre,
+        email: value.email,
+        nombreUsr: value.NombreUsr,
+        apellido: value.Apellidos,
+        contraseña: value.password,
+        tipo: tipo,
+        puntuacion: Math.floor(Math.random() * 1000) + 100
+      })
+    }
    })
   }
  

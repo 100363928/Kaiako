@@ -17,14 +17,17 @@ export interface Solicitud {
   entrenador:string;
 }
 
-
-
 export interface Usuario {
   key?: string;
   nombre: string;
   nombreUsr:string;
   apellido:string;
   email:string;
+  certificado?: string;
+  descripcion?: string;
+  anosExperiencia?: string;
+  numEstrellas?: number;
+  puntuacion?: number;
   tipo: string;
 }
 
@@ -57,12 +60,13 @@ export class TodoService {
   );
   }
 
-
+  initializeUser(){
+    this.solicitudesCollection = this.db.collection<Solicitud>
+    ('solicitudes', ref => ref.where('entrenador', '==', firebase.auth().currentUser.uid));
+  }
  
    
   getSolicitudes() {
-    this.solicitudesCollection = this.db.collection<Solicitud>
-    ('solicitudes', ref => ref.where('entrenador', '==', firebase.auth().currentUser.uid));
     this.solicitudes = this.solicitudesCollection.snapshotChanges()
     .pipe(
       map(actions => {
@@ -85,22 +89,16 @@ export class TodoService {
  
 
   updateSolicitud(solicitud: Solicitud, id: string) {
-    // return this.solicitudesCollection.doc(id).update(solicitud);
-    //this.usuariosCollection.doc(firebase.auth().currentUser.uid).collection('solicitudes').doc(firebase.auth().currentUser.uid).update(solicitud);
     return  this.solicitudesCollection.doc(id).update(solicitud);
   }
 
   addSolicitud(solicitud: Solicitud){
-    //return this.solicitudesCollection.add(solicitud);
-    //return this.usuariosCollection.doc(firebase.auth().currentUser.uid).collection('solicitudes').doc(firebase.auth().currentUser.uid).set(solicitud);
     var colSol = this.solicitudesCollection;
     return colSol.add(solicitud);
   }
 
   removeSolicitud(id){
-    //return this.solicitudesCollection.doc(id).delete();
-    // return this.usuariosCollection.doc(firebase.auth().currentUser.uid).collection('solicitudes').doc(firebase.auth().currentUser.uid).delete();
-    return firebase.firestore().collection('solicitudes').doc(id).delete();
+    return this.solicitudesCollection.doc(id).delete();
   }
 
   getEntrenadores(){
@@ -119,7 +117,6 @@ export class TodoService {
   }
 
   getEntrenador(id){
-  
     return this.entrenadorCollection.doc<Usuario>(id).valueChanges();
   }
 
@@ -138,11 +135,6 @@ export class TodoService {
 
   getUsuario(id) {
     return this.usuariosCollection.doc<Usuario>(id).valueChanges();
-  }
-
-  getNomUsuario(id) {
-    var db: AngularFirestore;
-    return 
   }
 
 }
