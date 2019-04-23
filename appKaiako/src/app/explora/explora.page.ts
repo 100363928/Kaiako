@@ -33,10 +33,12 @@ export class ExploraPage /*implements OnInit*/ {
     let val = ev.target.value;
 
     if(val && val.trim() != ''){
+      for(let i = 0; i < this.anuncioFiltered.length; i++) {
       this.anuncioFiltered = this.anuncio.filter((ev) => {
         //no funciona porque aquí necesito acceder a la parte 'nombre' de cada objeto del array de anuncios para compararlo
-        return (ev[0].toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (ev[i].nombre.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+      }
     }
   }
 
