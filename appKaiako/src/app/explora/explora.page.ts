@@ -6,20 +6,40 @@ import { LoadingController } from '@ionic/angular';
   templateUrl: './explora.page.html',
   styleUrls: ['./explora.page.scss'],
 })
-export class ExploraPage implements OnInit {
-  anuncio: Array<Object>
+export class ExploraPage /*implements OnInit*/ {
+  anuncio: Object[] = [];
+  anuncioFiltered: Object[] = [];
   constructor(private todoService:TodoService,private lc:LoadingController) { 
   this.anuncio=[
-    { nombre:'Cardio', descr:'ejercicios nuevos',img: '/assets/anun2.jpeg'},
+    { nombre:'Cardio', descr:'Ejercicios nuevos',img: '/assets/anun2.jpeg'},
     { nombre:'Brazo', descr:'Rutina ganadora',img: 'assets/anun0.png'},
     { nombre:'Lo mejor', descr:'Runtina publica',img: 'assets/anun1.jpeg'},
+    { nombre:'Lo más mejor', descr:'Mejores ejercicios semanales',img: 'assets/anun0.png'},
+    { nombre:'Lo mazo más mejor', descr:'Runtina publica',img: 'assets/anun2.jpeg'},
   ]
-
+  this.initializeItems();
   }
  
+  //ngOnInit() {}
 
-  ngOnInit() {
-    
+  initializeItems(){
+    this.anuncioFiltered = this.anuncio;
+
+  }
+
+  getAnuncios(ev: any){
+    //Inicializar de nuevo el array en caso de que haya cambiado algo
+    this.initializeItems();
+    let val = ev.target.value;
+
+    if(val && val.trim() != ''){
+      for(let i = 0; i < this.anuncioFiltered.length; i++) {
+      this.anuncioFiltered = this.anuncio.filter((ev) => {
+        //no funciona porque aquí necesito acceder a la parte 'nombre' de cada objeto del array de anuncios para compararlo
+        return (ev[i].nombre.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+      }
+    }
   }
 
 }
