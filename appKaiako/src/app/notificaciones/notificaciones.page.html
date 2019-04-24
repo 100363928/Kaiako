@@ -2,11 +2,28 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaulthref=""></ion-back-button>
-   </ion-buttons>
+    </ion-buttons>
     <ion-title>KAIAKO</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h2>Notificaciones</h2>
+  <h2 id="notTitulo">Notificaciones</h2>
+
+  <ion-card id="notificacion">
+    <ion-card-header>
+      <ion-card-title id="nombre"> {{notificacionTittle}} </ion-card-title>
+      <p>{{ notificationText }}</p>
+      <ion-icon class="edit" name="close" onclick="eliminarNotificacion()"></ion-icon>
+    </ion-card-header>
+    <ion-card-content>
+
+    </ion-card-content>
+  </ion-card>
+  <div id="noNotificaciones">
+    <h1 style="text-align: center"> Sin Notificaciones</h1>
+    <p style="text-align: center"> Actualmente no tienes notificaciones sin revisar</p>
+    <ion-icon style="font-size: 60px;" name="body" id="icono"></ion-icon>
+  </div>
+
 </ion-content>
