@@ -37,7 +37,8 @@ export class AuthenticateService {
         certificado: value.certificado,
         anosExperiencia: value.anosExperiencia,
         descripcion: value.descripcion,
-        numEstrellas: Math.floor(Math.random() * 5) + 1
+        numEstrellas: Math.floor(Math.random() * 5) + 1,
+        notificacion: false
       })
      }
      else{
@@ -48,7 +49,8 @@ export class AuthenticateService {
         apellido: value.Apellidos,
         contraseña: value.password,
         tipo: tipo,
-        puntuacion: Math.floor(Math.random() * 1000) + 100
+        puntuacion: Math.floor(Math.random() * 1000) + 100,
+        notificacion: false
       })
     }
    })

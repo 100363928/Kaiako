@@ -29,6 +29,7 @@ export interface Usuario {
   numEstrellas?: number;
   puntuacion?: number;
   tipo: string;
+  notificacion?: boolean;
 }
 
 export interface Anuncio {
