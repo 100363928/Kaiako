@@ -49,8 +49,8 @@ export class TodoService {
   private entrenadores: Observable<Usuario[]>;
 
   constructor(private db: AngularFirestore) { 
-    this.usuariosCollection= this.db.collection<Usuario>('usuarios');
-    this.entrenadorCollection= this.db.collection<Usuario>('/usuarios', ref => ref.where('tipo','==','entrenador'));
+    this.usuariosCollection = this.db.collection<Usuario>('usuarios');
+    this.entrenadorCollection = this.db.collection<Usuario>('/usuarios', ref => ref.where('tipo', '==', 'entrenador'));
     this.solicitudesCollection = this.db.collection<Solicitud>('solicitudes');
     // todos Los usuarios
     this.usuarios = this.usuariosCollection.snapshotChanges()
@@ -99,7 +99,7 @@ export class TodoService {
     return  this.solicitudesCollection.doc(id).update(solicitud);
   }
 
-  addSolicitud(solicitud: Solicitud){
+  addSolicitud(solicitud: Solicitud) {
     var colSol = this.solicitudesCollection;
     return colSol.add(solicitud);
   }

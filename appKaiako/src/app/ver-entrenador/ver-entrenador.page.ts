@@ -24,9 +24,9 @@ export class VerEntrenadorPage implements OnInit {
     anosExperiencia: '',
     numEstrellas: 0,
     descripcion: ''
-  }
+  };
 
-  constructor(private route: ActivatedRoute,private todoService: TodoService,private loadingController: LoadingController) {}
+  constructor(private route: ActivatedRoute, private todoService: TodoService, private loadingController: LoadingController) {}
 
   ngOnInit() {
     this.entrenadorId = this.route.snapshot.params['id'];
@@ -40,7 +40,7 @@ export class VerEntrenadorPage implements OnInit {
       message: 'Loading Todo..'
     });
     await loading.present();
- 
+
     this.todoService.getEntrenador(this.entrenadorId).subscribe(res => {
       loading.dismiss();
       this.entrenador = res;
