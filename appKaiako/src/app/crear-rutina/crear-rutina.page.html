@@ -1,9 +1,40 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>crearRutina</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaulthref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>KAIAKO</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="m">
+  <div>
+   <h1 style="text-align:center">Selecciona los ejercicios</h1>
+  </div>
+  <div >
+    <ion-list *ngFor="let tipo of tipo; let i = index;" class="acordion" lines="none"  no-padding>
+       <ion-card class="zona">
+          <ion-item tappable (click)="toggleSection(i)" [ngClass]="{'section-active':tipo.open,'section':!tipo.open}" >
+              <ion-icon slot="start" name="arrow-forward" *ngIf="tipo.open"></ion-icon>
+              <ion-icon slot="start" name="arrow-down" *ngIf="!tipo.open"></ion-icon>
+              <ion-label>{{tipo.zona}}</ion-label>
+              </ion-item>
+              <div *ngIf="tipo.ej && tipo.open">
+                <ion-list >
+                  <ion-card *ngFor="let ej of tipo.ej;let j=index" class="cardej">
+                      <!-- <ion-checkbox checked="true" *ngIf="ej.check"></ion-checkbox> -->
+                      <!-- <ion-checkbox checked="false" *ngIf="!ej.check"></ion-checkbox> -->
+                    <div class="ejNombre"><ion-card-title id="title">{{ej.nombre}}</ion-card-title></div>
+                    <img slot="end" height:80px [src]="ej.img">
+                    <div id="checkBox">
+                        <ion-checkbox id="checkBoxx" slot="end"checked="false" (click)="check(i,j)" (click)="add(i,j)"  *ngIf="!ej.check"></ion-checkbox>
+                        <ion-checkbox id="checkBoxx" slot="end"checked="true" (click)="check(i,j)" (click)="remove(i,j)" *ngIf="ej.check"></ion-checkbox>
+                    </div>
+                   </ion-card>
+                </ion-list>
+              </div>
+       </ion-card>
+     </ion-list>
+     <ion-button style="display:block;align-self:center;margin:auto;width:60%;margin-bottom:3%"(click)="crear()">Crear</ion-button>
+  </div>
 </ion-content>

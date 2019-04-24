@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaulthref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>KAIAKO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label  position="floating" color="primary">Dale nombre a tu rutina</ion-label>
+        <ion-input type="text"  [(ngModel)]="nombre" ></ion-input>
+      </ion-item>
+  <ion-list *ngFor="let ej of rutina; let i=index;">
+    <ion-card>
+      <h1 style="text-align:center;font-size:20px">{{ej.nombre}}</h1>
+      <ion-list>
+        <ion-item>
+            <ion-label>Repeticiones</ion-label>
+            <ion-select [(ngModel)]="ej.reps" placeholder="Select">
+              <ion-select-option value="5-8">5-8</ion-select-option>
+              <ion-select-option value="9-11">9-11</ion-select-option>
+              <ion-select-option value="12-14">12-14</ion-select-option>
+              <ion-select-option value="Hasta fallo">Hasta fallo</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Series</ion-label>
+            <ion-select [(ngModel)]="ej.series"  placeholder="Select">
+              <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+              <ion-select-option value="3">3</ion-select-option>
+              <ion-select-option value="4">4</ion-select-option>
+              <ion-select-option value="5">5</ion-select-option>
+              <ion-select-option value="6">6</ion-select-option>
+              <ion-select-option value="7">7</ion-select-option>
+              <ion-select-option value="8">8</ion-select-option>
+              <ion-select-option value="9">9</ion-select-option>
+              <ion-select-option value="10">10</ion-select-option>
+
+            </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </ion-list>
+  <ion-button style="display:block;align-self:center;margin:auto;width:60%;margin-bottom:3%"(click)="crear()">Crear</ion-button>
+</ion-content>

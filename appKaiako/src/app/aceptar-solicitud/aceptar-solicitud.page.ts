@@ -40,6 +40,7 @@ export class AceptarSolicitudPage implements OnInit {
         console.log('Pidiendo solicitudes');
         this.solicitudes = res;
      });
+     console.log(this.solicitudes.length);
   }
 
   rechazar(item){

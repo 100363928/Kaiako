@@ -11,6 +11,10 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="!solicitudes?.length>0">
+    <h1 style="text-align:center;font-size:20px;">No tienes solicitudes</h1>
+    <ion-icon  name="body"></ion-icon>
+  </div>
   <ion-list>
     <ng-container *ngIf="!solicitudes || solicitudes.length == 0">
       <div *ngFor="let n of [0,1,2]" padding>
