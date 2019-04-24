@@ -8,7 +8,7 @@ import { LoadingController } from '@ionic/angular';
   templateUrl: './explora.page.html',
   styleUrls: ['./explora.page.scss'],
 })
-export class ExploraPage /*implements OnInit*/ {
+export class ExploraPage{
   anuncio: Anuncio[] = [];
   anuncioFiltered: Anuncio[] = [];
   constructor(private todoService: TodoService, private lc: LoadingController) {
@@ -35,7 +35,6 @@ export class ExploraPage /*implements OnInit*/ {
 
     if(val && val.trim() != ''){
       this.anuncioFiltered = this.anuncio.filter((ev) => {
-        //no funciona porque aquí necesito acceder a la parte 'nombre' de cada objeto del array de anuncios para compararlo
         return (ev.nombre.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }

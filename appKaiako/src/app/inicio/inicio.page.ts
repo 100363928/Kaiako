@@ -60,7 +60,7 @@ export class InicioPage implements OnInit {
     }, err => {
       this.errorMessage = err.message;
     });
-    //
+    
     const firestore = firebase.firestore();
     firestore.collection('registro').doc(value.email).get().then(function (doc) {
       if (doc && doc.exists) {
