@@ -18,12 +18,12 @@ export class RutinaPage implements OnInit {
   rutinaFinal:rutina;
   solicitanteId:any;
   ngOnInit() {
-    /* FALTA ESTO
+    // FALTA ESTO
     this.cr.getRutina().map(res=>{
       this.rutina.push(res);
       console.log(res.nombre+" "+ res.reps);
     })
-    //this.solicitanteId = this.route.snapshot.params['id'];
+    /*this.solicitanteId = this.route.snapshot.params['id'];
     if (this.solicitanteId)  {
   
     }*/

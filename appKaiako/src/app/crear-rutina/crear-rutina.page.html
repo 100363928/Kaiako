@@ -35,6 +35,6 @@
               </div>
        </ion-card>
      </ion-list>
-     <ion-button style="display:block;align-self:center;margin:auto;width:60%;margin-bottom:3%"(click)="crear()">Crear</ion-button>
+     <ion-button style="display:block;align-self:center;margin:auto;width:60%;margin-bottom:3%" (click)="crear()" [routerLink]="['/menu/aceptar-solicitud/crear-rutina/rutina', clienteId]"  routerDirection="forward">Crear</ion-button>
   </div>
 </ion-content>

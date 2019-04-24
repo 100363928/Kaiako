@@ -28,6 +28,22 @@ const routes: Routes = [
         path: 'notificaciones',
         loadChildren: '../notificaciones/notificaciones.module#NotificacionesPageModule'
       },
+      {
+        path: 'aceptar-solicitud/crear-rutina',
+        loadChildren: '../crear-rutina/crear-rutina.module#CrearRutinaPageModule'
+      },
+      {
+        path: 'aceptar-solicitud/crear-rutina/:id',
+        loadChildren: '../crear-rutina/crear-rutina.module#CrearRutinaPageModule'
+      },
+      {
+        path: 'aceptar-solicitud/crear-rutina/rutina',
+        loadChildren: '../rutina/rutina.module#RutinaPageModule'
+      },
+      {
+        path: 'aceptar-solicitud/crear-rutina/rutina/:id',
+        loadChildren: '../rutina/rutina.module#RutinaPageModule'
+      },
     ]
   }
 ];
