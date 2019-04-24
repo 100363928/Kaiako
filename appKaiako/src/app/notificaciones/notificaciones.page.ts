@@ -29,7 +29,8 @@ export class NotificacionesPage implements OnInit {
   notificationText = null;
   notificationImage = null;
 
-  
+  tipo: string;
+  notificacion: boolean;
 
   constructor(private route: ActivatedRoute, private todoService: TodoService, private loadingController: LoadingController) { }
 
@@ -49,7 +50,7 @@ export class NotificacionesPage implements OnInit {
       //No me descarga el usuario???
       console.log(this.usuario);
 
-      if(this.usuario.tipo == "cliente"){
+      if(this.tipo == "cliente"){
         this.notificacionTittle = "Nueva Rutina";
         this.notificationText = "Ha recibido una nueva rutina";
       }
@@ -87,6 +88,8 @@ export class NotificacionesPage implements OnInit {
     this.todoService.getUsuario(this.usuarioId).subscribe(res => {
       loading.dismiss();
       this.usuario = res;
+      this.tipo = res.tipo;
+      //this.notificacion = res.notificacion;
     });
   }
 
