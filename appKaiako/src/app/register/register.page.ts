@@ -76,7 +76,6 @@ export class RegisterPage implements OnInit {
      .then(res => {
        console.log(res);
        this.errorMessage = "";
-       this.successMessage = "Cuenta creada! Bienvenido";
 
        this.authService.loginUser(value)
        .then(res => {

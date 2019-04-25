@@ -46,7 +46,7 @@ export class InicioPage implements OnInit {
     ],
     'password': [
       { type: 'required', message: 'Contraseña requerida.' },
-      { type: 'minlength', message: 'La contraseña debe tener al menos 5 caracteres.' }
+      { type: 'minlength', message: 'La contraseña debe tener al menos 6 caracteres.' }
     ]
   };
  
