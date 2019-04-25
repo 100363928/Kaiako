@@ -11,7 +11,12 @@ export class ClientesEntrPage implements OnInit {
   constructor() { 
     this.clientes = [
       'Andrea Perez',
-      'Pedro Gonzalez'
+      'Pedro Gonzalez',
+      'Farid Wanis',
+      'Sofia Wanis',
+      'Amanda Lopez',
+      'Alicia Brujez',
+      'Ofelia Arean',
     ]
   }
 
