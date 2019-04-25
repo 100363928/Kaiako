@@ -20,6 +20,10 @@ export class MenuPage implements OnInit {
       url: '/menu/entrenador-tabs'
     },
     {
+      title: 'Clasificacion',
+      url: '/menu/clasificacion'
+    },
+    {
       title: 'Aceptar solicitud',
       url: '/menu/aceptar-solicitud'
     },

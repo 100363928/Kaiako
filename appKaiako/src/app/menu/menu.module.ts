@@ -17,6 +17,10 @@ const routes: Routes = [
         loadChildren: '../config/config.module#ConfigPageModule'
       },
       {
+        path: 'clasificacion',
+        loadChildren: '../clasificacion/clasificacion.module#ClasificacionPageModule'
+      },
+      {
         path: 'tabs',
         loadChildren: '../tabs/tabs.module#TabsPageModule'
       },
