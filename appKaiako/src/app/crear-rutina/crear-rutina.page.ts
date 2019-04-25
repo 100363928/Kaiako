@@ -26,43 +26,42 @@ export class CrearRutinaPage implements OnInit {
         ej:[
           {nombre:"Press", reps:0,series:0,check:false,img:"/assets/press.jpg"},
           {nombre:"Fly", reps:0,series:0,check:false,img:"/assets/fly.jpg"},
-          {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"}]
+          {nombre:"Flexion", reps:0,series:0,check:false,img:"/assets/pecho3.jpg"}]
         },
       {tipo:"Tren Superior", zona:"Espalda",open:false,
       ej:[
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"}]
+        {nombre:"Barra", reps:0,series:0,check:false,img:"/assets/espalda1.jpg"},
+        {nombre:"Pull cable", reps:0,series:0,check:false,img:"/assets/espalda2.jpg"},
+        {nombre:"Dominada", reps:0,series:0,check:false,img:"/assets/espalda3.jpg"}]
         },
       {tipo:"Tren Superior", zona:"Hombros",open:false,
       ej:[
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"}]  
+        {nombre:"Rise", reps:0,series:0,check:false,img:"/assets/hombro1.jpg"},
+        {nombre:"Rise vertical", reps:0,series:0,check:false,img:"/assets/hombro2.jpg"},
+        {nombre:"Rise lateral", reps:0,series:0,check:false,img:"/assets/hombro3.jpg"}]  
       },
       {tipo:"Tren Inferior", zona:"Pierna",open:false,
       ej:[
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"}]  
+        {nombre:"Escalon", reps:0,series:0,check:false,img:"/assets/pierna1.jpg"},
+        {nombre:"Lungee", reps:0,series:0,check:false,img:"/assets/pierna2.jpg"},
+        {nombre:"Squat", reps:0,series:0,check:false,img:"/assets/pierna3.jpg"}]  
       },
       {tipo:"Tren Inferior", zona:"Gluteo",open:false,
       ej:[
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"}]
+        {nombre:"KickBack", reps:0,series:0,check:false,img:"/assets/glut1.jpg"},
+        {nombre:"DonkeyKick", reps:0,series:0,check:false,img:"/assets/glut2.jpg"},]
       },
       {tipo:"Cardio", zona:"Cardio",open:false,
       ej:[
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"}]
+        {nombre:"Correr", reps:0,series:0,check:false,img:"/assets/cardio1.jpg"},
+        {nombre:"Eliptica", reps:0,series:0,check:false,img:"/assets/cardio2.jpg"},
+        {nombre:"Bici", reps:0,series:0,check:false,img:"/assets/cardio3.jpeg"}]
       },
       {tipo:"Tronco", zona:"Abdomen",open:false,
       ej:[
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
-        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"}]
+        {nombre:"Levantamiento", reps:0,series:0,check:false,img:"/assets/abs1.jpg"},
+        {nombre:"Toque lateral", reps:0,series:0,check:false,img:"/assets/abs2.jpg"},
+        {nombre:"Plancha lateral", reps:0,series:0,check:false,img:"/assets/abs3.jpg"}]
       },
     ] 
   }
