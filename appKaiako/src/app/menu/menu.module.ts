@@ -13,6 +13,10 @@ const routes: Routes = [
     component: MenuPage,
     children: [
       {
+        path: 'config',
+        loadChildren: '../config/config.module#ConfigPageModule'
+      },
+      {
         path: 'tabs',
         loadChildren: '../tabs/tabs.module#TabsPageModule'
       },
