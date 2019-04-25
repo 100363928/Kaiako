@@ -29,6 +29,7 @@ export interface Usuario {
   numEstrellas?: number;
   puntuacion?: number;
   tipo: string;
+  notificacion?: boolean;
 }
 
 export interface Anuncio {
@@ -54,6 +55,7 @@ export class TodoService {
     this.usuariosCollection = this.db.collection<Usuario>('usuarios');
     this.entrenadorCollection = this.db.collection<Usuario>('/usuarios', ref => ref.where('tipo', '==', 'entrenador'));
     this.solicitudesCollection = this.db.collection<Solicitud>('solicitudes');
+    
     // todos Los usuarios
     this.usuarios = this.usuariosCollection.snapshotChanges()
    .pipe(

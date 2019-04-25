@@ -13,9 +13,31 @@
 </ion-header>
 
 <ion-content>
-  <div>
+  <div *ngIf="!rutina?.length>0">
     <h1 style="text-align: center"> Aun no tienes entrenador</h1>
     <p style="text-align: center"> Ve a explorar y encuentra al entrenador perfecto para tus objetivos</p>
     <ion-icon style="font-size: 60px;" name="body"></ion-icon>
-  </div>
+   </div>
+  
+  <div *ngIf="open?.length>0">
+    <ion-list>
+      <ion-card *ngFor="let rutina of rutina;let i=index;">
+        <ion-label> Rutina : {{rutina.nombre}}</ion-label>
+        <ion-list>
+          <ion-item no-lines>
+            <div class="it a"> Ejercicio</div>
+            <div class="it a"> Reps</div>
+            <div class="it a">Series</div>
+          </ion-item>
+          <ion-item *ngFor="let ej of rutina.ejer" >
+            <div class="it b"> {{ej.nombre}} </div>
+            <div class="it b"> {{ej.reps}} </div>
+            <div class="it ">{{ej.series}}</div>
+           </ion-item>
+        </ion-list>
+       </ion-card>
+     </ion-list>
+   </div>
+  
+  
 </ion-content>

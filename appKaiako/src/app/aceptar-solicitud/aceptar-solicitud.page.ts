@@ -35,11 +35,13 @@ export class AceptarSolicitudPage implements OnInit {
      });
      await loading.present();
       loading.dismiss();
+
       this.todoService.getSolicitudes().subscribe(res => {
         console.log(res);
         console.log('Pidiendo solicitudes');
         this.solicitudes = res;
      });
+     
      console.log(this.solicitudes.length);
   }
 

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ejercicio,zona,CrearRutinasService} from '../../app/services/crear-rutinas.service';
 import { NavController } from '@ionic/angular';
-
-
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,9 +12,10 @@ import { NavController } from '@ionic/angular';
 export class CrearRutinaPage implements OnInit {
   tipo: zona[];
   ej: ejercicio[];
-  lista:ejercicio[]=[];
+  lista: ejercicio[]=[];
+  clienteId = null;
 
-  constructor(private navCtrl:NavController , private cr:CrearRutinasService) { 
+  constructor(private navCtrl: NavController , private cr: CrearRutinasService, private route: ActivatedRoute) {
     this.tipo = [
       {tipo:"Tren Superior", zona:"Brazo",open:false,
           ej:[
@@ -58,30 +58,35 @@ export class CrearRutinaPage implements OnInit {
         {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
         {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"}]
       },
-    ]
-   
+    ] 
   }
+
+  ngOnInit() {
+    this.clienteId = this.route.snapshot.params['id'];
+  }
+
   toggleSection(index){
-    this.tipo[index].open=!this.tipo[index].open
+    this.tipo[index].open=!this.tipo[index].open;
   }
-  add(i,j){
+
+  add(i, j) {
   this.lista.push(this.tipo[i].ej[j]);
   console.log("added "+ this.tipo[i].ej[j].nombre);
   console.log(this.lista.length);
   }
 
-  remove(i,j){
+  remove(i, j) {
    this.lista.splice(this.lista.indexOf(this.tipo[i].ej[j]),1);
    console.log("deleted "+ this.tipo[i].ej[j].nombre);
    console.log(this.lista.length);
    }
 
- check(i,j){
+ check(i, j) {
    this.tipo[i].ej[j].check=!this.tipo[i].ej[j].check;
    console.log("its "+ this.tipo[i].ej[j].check);
  }
  crear(){
-   this.navCtrl.navigateForward(("/rutina"));
+   //this.navCtrl.navigateForward(("/rutina"));
    this.cr.setRutina(this.lista);
  }
 
@@ -89,8 +94,5 @@ export class CrearRutinaPage implements OnInit {
   return this.lista;
  }
   
-
-  ngOnInit() {
-  }
 
 }

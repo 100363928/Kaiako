@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="!solicitudes?.length>0">
+  <div *ngIf="!solicitudes || solicitudes.length==0">
     <h1 style="text-align:center;font-size:20px;">No tienes solicitudes</h1>
     <ion-icon  name="body"></ion-icon>
   </div>
@@ -35,7 +35,7 @@
             <p><strong>Altura: </strong>{{solicitud.altura}} </p>
             <p><strong>Objetivo: </strong> {{solicitud.objetivo}}</p>
             <p><strong>Mensaje: </strong>{{solicitud.mensaje}}</p>
-            <button class="boton">Aceptar</button>
+            <button class="boton" [routerLink]="['/menu/aceptar-solicitud/crear-rutina', solicitud.solicitante]" routerDirection="forward">Aceptar</button>
             <button class="boton" (click)="rechazar(solicitud)">Rechazar</button>
         </ion-card-content>
     </ion-card>

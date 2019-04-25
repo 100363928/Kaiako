@@ -89,6 +89,7 @@ export class NotificacionesPage implements OnInit {
       loading.dismiss();
       this.usuario = res;
       this.tipo = res.tipo;
+      this.notificacion = res.notificacion;
       //this.notificacion = res.notificacion;
     });
   }

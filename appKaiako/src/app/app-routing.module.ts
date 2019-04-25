@@ -7,9 +7,7 @@ const routes: Routes = [
   { path: 'inicio', loadChildren: './inicio/inicio.module#InicioPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
   { path: 'register-entr', loadChildren: './register-entr/register-entr.module#RegisterEntrPageModule' },
-  { path: 'crear-rutina', loadChildren: './crear-rutina/crear-rutina.module#CrearRutinaPageModule' },
-  { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
-  { path: 'rutina', loadChildren: './rutina/rutina.module#RutinaPageModule' }
+  { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' }
 ];
 @NgModule({
   imports: [

@@ -10,20 +10,19 @@
 <ion-content>
   <h2 id="notTitulo">Notificaciones</h2>
 
-  <ion-card id="notificacion">
-    <ion-card-header>
+  <ion-card id="notificacion" *ngIf="notificacion == true">
+    <ion-card-header >
       <ion-card-title id="nombre" *ngIf="tipo == 'cliente'"> Nueva Rutina </ion-card-title>
       <p *ngIf="tipo == 'cliente'"> Ha recibido una nueva rutina </p>
       <ion-card-title id="nombre" *ngIf="tipo == 'entrenador'"> Solicitud de Rutina </ion-card-title>
       <p *ngIf="tipo == 'entrenador'"> Tienes nuevas solicitudes pendientes </p>
-      <ion-icon class="edit" name="close" onclick="eliminarNotificacion()"></ion-icon>
     </ion-card-header>
     <ion-card-content>
 
     </ion-card-content>
   </ion-card>
   
-  <div id="noNotificaciones">
+  <div id="noNotificaciones" *ngIf="notificacion == false">
     <h1 style="text-align: center"> Sin Notificaciones</h1>
     <p style="text-align: center"> Actualmente no tienes notificaciones sin revisar</p>
     <ion-icon style="font-size: 60px;" name="body" id="icono"></ion-icon>

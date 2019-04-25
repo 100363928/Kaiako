@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ejercicio,rutina,CrearRutinasService} from '../../app/services/crear-rutinas.service';
 import { NavController,LoadingController } from '@ionic/angular';
 import * as firebase from 'firebase/app';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,30 +12,34 @@ import * as firebase from 'firebase/app';
 })
 export class RutinaPage implements OnInit {
 
-  constructor(private navCtrl:NavController ,private loadingController: LoadingController, private cr:CrearRutinasService) { }
+  constructor(private navCtrl:NavController ,private router:ActivatedRoute,private loadingController: LoadingController, private cr:CrearRutinasService) { }
   rutina:ejercicio[]=[];
-  nombre:any;
+  nombre='';
   solicitante:any;
-  rutinaFinal:rutina;
+  rutinaFinal:rutina={
+    nombre:'',
+    solicitante:'',
+    entrenador:''
+  };
   solicitanteId:any;
+  
   ngOnInit() {
     
+ 
     this.cr.getRutina().map(res=>{
       this.rutina.push(res);
       console.log(res.nombre+" "+ res.reps);
-    })
-    /* FALTA ESTO
-    //this.solicitanteId = this.route.snapshot.params['id'];
-    if (this.solicitanteId)  {
-  
-    }*/
+    });
+    this.solicitanteId = this.router.snapshot.params['id'];
+   
+    
   }
-
+ 
   crear(){
     this.navCtrl.navigateBack("/menu/aceptar-solicitud");
     this.rutinaFinal.nombre=this.nombre;
     this.rutinaFinal.entrenador=firebase.auth().currentUser.uid;
-
+    this.rutinaFinal.solicitante=this.solicitanteId;
     this.cr.saveRutina(this.rutina,this.rutinaFinal);
   }
 
