@@ -22,6 +22,10 @@ export class MenuPage implements OnInit {
     {
       title: 'Aceptar solicitud',
       url: '/menu/aceptar-solicitud'
+    },
+    {
+      title: 'Ajustes',
+      url: '/menu/config'
     }
   ];
 
