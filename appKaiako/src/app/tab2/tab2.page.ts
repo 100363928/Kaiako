@@ -18,7 +18,6 @@ constructor(private cr:CrearRutinasService,){
     console.log('Pidiendo rutinas');
     this.rutina= res;
     console.log(this.rutina.length);
-    console.log("NOMBRE!"+this.rutina[1].nombre);
   });
 }
 
