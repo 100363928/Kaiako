@@ -58,6 +58,12 @@ export class CrearRutinaPage implements OnInit {
         {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
         {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"}]
       },
+      {tipo:"Tronco", zona:"Abdomen",open:false,
+      ej:[
+        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
+        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"},
+        {nombre:"otro", reps:0,series:0,check:false,img:"/assets/felxb.jpg"}]
+      },
     ] 
   }
 

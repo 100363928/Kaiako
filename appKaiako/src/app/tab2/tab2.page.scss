@@ -10,8 +10,17 @@ display: inline-block;
 width:34%;
 height:10px;
 text-align: center;
+vertical-align: center;
 }
 .a{
     font-weight: bold;
 }
 
+.c{
+    height: 50px;
+}
+
+ion-label{
+    margin-left:2%;
+    font:30px;
+}

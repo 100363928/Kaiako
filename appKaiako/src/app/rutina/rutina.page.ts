@@ -37,7 +37,6 @@ export class RutinaPage implements OnInit {
  
   crear(){
     this.navCtrl.navigateBack("/menu/aceptar-solicitud");
-    this.rutinaFinal.nombre=this.nombre;
     this.rutinaFinal.entrenador=firebase.auth().currentUser.uid;
     this.rutinaFinal.solicitante=this.solicitanteId;
     this.cr.saveRutina(this.rutina,this.rutinaFinal);

@@ -25,7 +25,7 @@
                       <!-- <ion-checkbox checked="true" *ngIf="ej.check"></ion-checkbox> -->
                       <!-- <ion-checkbox checked="false" *ngIf="!ej.check"></ion-checkbox> -->
                     <div class="ejNombre"><ion-card-title id="title">{{ej.nombre}}</ion-card-title></div>
-                    <img slot="end" height:80px [src]="ej.img">
+                    <img id="imgs" slot="end" height:80px [src]="ej.img">
                     <div id="checkBox">
                         <ion-checkbox id="checkBoxx" slot="end"checked="false" (click)="check(i,j)" (click)="add(i,j)"  *ngIf="!ej.check"></ion-checkbox>
                         <ion-checkbox id="checkBoxx" slot="end"checked="true" (click)="check(i,j)" (click)="remove(i,j)" *ngIf="ej.check"></ion-checkbox>

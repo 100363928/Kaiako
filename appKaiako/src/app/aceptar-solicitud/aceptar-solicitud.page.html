@@ -35,7 +35,7 @@
             <p><strong>Altura: </strong>{{solicitud.altura}} </p>
             <p><strong>Objetivo: </strong> {{solicitud.objetivo}}</p>
             <p><strong>Mensaje: </strong>{{solicitud.mensaje}}</p>
-            <button class="boton" [routerLink]="['/menu/aceptar-solicitud/crear-rutina', solicitud.solicitante]" routerDirection="forward">Aceptar</button>
+            <button class="boton" [routerLink]="['/menu/aceptar-solicitud/crear-rutina', solicitud.solicitante]" routerDirection="forward" (click)="aceptar(solicitud)" >Aceptar</button>
             <button class="boton" (click)="rechazar(solicitud)">Rechazar</button>
         </ion-card-content>
     </ion-card>

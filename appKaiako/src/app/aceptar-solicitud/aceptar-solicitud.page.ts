@@ -50,7 +50,8 @@ export class AceptarSolicitudPage implements OnInit {
     this.todoService.removeSolicitud(item.id);
   }
 
-  aceptar(item){}
-
-
+  aceptar(item){
+    this.todoService.removeSolicitud(item.id);
+  }
+  
 }
