@@ -1,8 +1,10 @@
+import { TodoService } from './../services/todo.service';
 import { Component, OnInit } from '@angular/core';
 import {ejercicio,rutina,CrearRutinasService} from '../../app/services/crear-rutinas.service';
 import { NavController,LoadingController } from '@ionic/angular';
 import * as firebase from 'firebase/app';
 import { ActivatedRoute } from '@angular/router';
+import { Usuario } from '../services/todo.service';
 
 
 @Component({
@@ -12,7 +14,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RutinaPage implements OnInit {
 
-  constructor(private navCtrl:NavController ,private router:ActivatedRoute,private loadingController: LoadingController, private cr:CrearRutinasService) { }
+  usuario: Usuario = null;
+
+  constructor(private navCtrl:NavController ,private router:ActivatedRoute,private loadingController: LoadingController, private cr:CrearRutinasService, private todoService: TodoService) { }
   rutina:ejercicio[]=[];
   nombre='';
   solicitante:any;
@@ -32,7 +36,15 @@ export class RutinaPage implements OnInit {
     });
     this.solicitanteId = this.router.snapshot.params['id'];
    
-    
+    this.traerUsuario();
+  }
+
+  async traerUsuario(){
+
+    this.todoService.getUsuario(this.solicitanteId).subscribe(res=>{
+      this.usuario = res;
+    });
+
   }
  
   crear(){
@@ -40,6 +52,17 @@ export class RutinaPage implements OnInit {
     this.rutinaFinal.entrenador=firebase.auth().currentUser.uid;
     this.rutinaFinal.solicitante=this.solicitanteId;
     this.cr.saveRutina(this.rutina,this.rutinaFinal);
+    this.guardarUsuario();
+  }
+
+  guardarUsuario(){
+    this.usuario.notificacion=true;
+    console.log(this.usuario);
+    this.cargarUsuario();
+  }
+
+  async cargarUsuario(){
+    this.todoService.updateUsuario(this.usuario, this.solicitanteId);
   }
 
 }
