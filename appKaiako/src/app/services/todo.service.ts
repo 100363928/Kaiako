@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
 import { of } from 'rxjs';
+import { LoadingController } from '@ionic/angular';
 
 export interface Solicitud {
   key?: string;
@@ -50,8 +51,9 @@ export class TodoService {
   private usuarios: Observable<Usuario[]>;
   private entrenadorCollection: AngularFirestoreCollection<Usuario>;
   private entrenadores: Observable<Usuario[]>;
+  private persona: Observable<Usuario[]>;
 
-  constructor(private db: AngularFirestore) { 
+  constructor(private db: AngularFirestore,private lc: LoadingController) { 
     this.usuariosCollection = this.db.collection<Usuario>('usuarios');
     this.entrenadorCollection = this.db.collection<Usuario>('/usuarios', ref => ref.where('tipo', '==', 'entrenador'));
     this.solicitudesCollection = this.db.collection<Solicitud>('solicitudes');
@@ -147,5 +149,26 @@ export class TodoService {
   getUsuario(id) {
     return this.usuariosCollection.doc<Usuario>(id).valueChanges();
   }
+
+   async esEntrenador(id){
+    let pers:Usuario={
+      nombre:'',
+      apellido:'',
+      nombreUsr:'',
+      email:'',
+      tipo:'a'
+    };
+    const firestore = firebase.firestore();
+    let persona = this.entrenadorCollection.doc(id);
+    const loading = await this.lc.create({
+      message: 'Cargandouuu datooos'
+     });
+     this.getUsuario(id).subscribe(res => {
+      console.log(res);
+      console.log('Pidiendo solicitudes');
+      pers.tipo = res.tipo;
+   });
+    if(pers.tipo=='cliente'){return false}else{return true}
+   }
 
 }
