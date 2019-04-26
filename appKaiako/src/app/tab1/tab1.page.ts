@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Solicitud,Usuario, TodoService } from './../services/todo.service';
 import { LoadingController } from '@ionic/angular';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-tab1',
@@ -8,6 +9,7 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  notificacion:boolean;
   entrenador: Usuario[];
   entrFiltered: Usuario[];
   numbers = [];
@@ -54,5 +56,20 @@ getEntrenadores(ev: any){
   verMas(entrenador){
     console.log(entrenador.id);
     return entrenador
+  }
+
+  async loadTodo() {
+    const loading = await this.lc.create({
+      message: 'Loading Todo..'
+    });
+
+    this.todoService.getUsuario(firebase.auth().currentUser.uid).subscribe(res => {
+      loading.dismiss();
+      this.notificacion = res.notificacion;
+      //this.notificacion = res.notificacion;
+    });
+    await loading.present();
+   
+    console.log("Valor"+this.notificacion);
   }
 }

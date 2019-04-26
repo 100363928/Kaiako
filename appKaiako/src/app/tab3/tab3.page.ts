@@ -12,7 +12,7 @@ import * as firebase from 'firebase/app';
 export class Tab3Page implements OnInit {
 
   usuarioId = null;
-
+  notificacion:boolean;
   usuario: Usuario = {
     nombre: '',
     nombreUsr: '',
@@ -44,6 +44,21 @@ export class Tab3Page implements OnInit {
       loading.dismiss();
       this.usuario = res;
     });
+  }
+
+  async loadTodo2() {
+    const loading = await this.loadingController.create({
+      message: 'Loading Todo..'
+    });
+
+    this.todoService.getUsuario(firebase.auth().currentUser.uid).subscribe(res => {
+      loading.dismiss();
+      this.notificacion = res.notificacion;
+      //this.notificacion = res.notificacion;
+    });
+    await loading.present();
+   
+    console.log("Valor"+this.notificacion);
   }
 
 }

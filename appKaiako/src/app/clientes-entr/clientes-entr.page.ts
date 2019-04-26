@@ -26,7 +26,7 @@ export class ClientesEntrPage implements OnInit {
   }
 
   ngOnInit() {
-    this.clientes.loadTodo()
+    this.loadTodo()
   }
 
   async loadTodo() {

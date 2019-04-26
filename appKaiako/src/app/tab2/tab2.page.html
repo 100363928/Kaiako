@@ -7,7 +7,8 @@
       KAIAKO
     </ion-title>
     <ion-buttons routerLink = "/menu/notificaciones" slot="end">
-      <ion-icon size="large" name="notifications"></ion-icon>
+      <ion-icon *ngIf="!notificacion" size="large" name="notifications-outline"></ion-icon>
+      <ion-icon *ngIf="notificacion" size="large" name="notifications"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
