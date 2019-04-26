@@ -14,9 +14,14 @@
     <ion-card-header >
       <ion-card-title id="nombre" *ngIf="tipo == 'cliente'"> Nueva Rutina </ion-card-title>
       <p *ngIf="tipo == 'cliente'"> Ha recibido una nueva rutina </p>
+      <ion-button  *ngIf="tipo == 'cliente'" (click)="borrarNotificacionC()" expand="block">
+          Ver mis rutinas
+      </ion-button>
       <ion-card-title id="nombre" *ngIf="tipo == 'entrenador'"> Solicitud de Rutina </ion-card-title>
       <p *ngIf="tipo == 'entrenador'"> Tienes nuevas solicitudes pendientes </p>
-      <ion-icon  class="edit" name="close" (click)="borrarNotificacion()"></ion-icon>
+      <ion-button  *ngIf="tipo == 'entrenador'"  (click)="borrarNotificacionE()" expand="block" >
+        Ver mis solicitudes
+      </ion-button>
     </ion-card-header>
     <ion-card-content>
 

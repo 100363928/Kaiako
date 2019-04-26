@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TodoService, Usuario } from '../services/todo.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 import * as firebase from 'firebase/app';
 
 @Component({
@@ -22,7 +22,8 @@ export class NotificacionesPage implements OnInit {
   tipo: string;
   notificacion: boolean;
 
-  constructor(private route: ActivatedRoute, private todoService: TodoService, private loadingController: LoadingController) { }
+  constructor(private route: ActivatedRoute, private todoService: TodoService, private loadingController: LoadingController, 
+    private navCtrl: NavController) { }
 
   ngOnInit() {
     this.usuarioId = firebase.auth().currentUser.uid;
@@ -86,15 +87,22 @@ export class NotificacionesPage implements OnInit {
 
   }
 
-  borrarNotificacion(){
+  borrarNotificacionC(){
     console.log(this.usuario);
     this.notificacion=false;
     this.usuario.notificacion=false;
     this.modiUsr();
-    
-    
-
+    this.navCtrl.navigateRoot('/menu/tabs/tabs/tab2');
   }
+
+  borrarNotificacionE(){
+    console.log(this.usuario);
+    this.notificacion=false;
+    this.usuario.notificacion=false;
+    this.modiUsr();
+    this.navCtrl.navigateRoot('/menu/aceptar-solicitud');
+  }
+
   async modiUsr(){
     this.todoService.updateUsuario(this.usuario, this.usuarioId);
   }
