@@ -85,13 +85,15 @@ export class NotificacionesPage implements OnInit {
     });
     await loading.present();
 
-    this.todoService.getUsuario(this.usuarioId).subscribe(res => {
+    this.todoService.getUsuario(firebase.auth().currentUser.uid).subscribe(res => {
       loading.dismiss();
       this.usuario = res;
       this.tipo = res.tipo;
       this.notificacion = res.notificacion;
       //this.notificacion = res.notificacion;
+      console.log("Valorooo"+this.notificacion);
     });
+
   }
 
   

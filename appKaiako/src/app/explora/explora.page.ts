@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Solicitud, Usuario, TodoService, Anuncio } from './../services/todo.service';
 import { LoadingController } from '@ionic/angular';
+import * as firebase from 'firebase/app';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { LoadingController } from '@ionic/angular';
 export class ExploraPage{
   anuncio: Anuncio[] = [];
   anuncioFiltered: Anuncio[] = [];
+  notificacion:boolean=false;
   constructor(private todoService: TodoService, private lc: LoadingController) {
     this.anuncio = [
       { nombre: 'Cardio', descr: 'Ejercicios nuevos', img: '/assets/anun2.jpeg'},
@@ -22,7 +24,10 @@ export class ExploraPage{
     this.initializeItems();
   }
  
-  //ngOnInit() {}
+  ngOnInit() {
+    this.loadTodo();
+
+  }
 
   initializeItems(){
     this.anuncioFiltered = this.anuncio;
@@ -39,5 +44,21 @@ export class ExploraPage{
       })
     }
   }
+
+  async loadTodo() {
+    const loading = await this.lc.create({
+      message: 'Loading Todo..'
+    });
+
+    this.todoService.getUsuario(firebase.auth().currentUser.uid).subscribe(res => {
+      loading.dismiss();
+      this.notificacion = res.notificacion;
+      //this.notificacion = res.notificacion;
+    });
+    await loading.present();
+   
+    console.log("Valor"+this.notificacion);
+  }
+  
 
 }

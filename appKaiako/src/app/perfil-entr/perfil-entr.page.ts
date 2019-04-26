@@ -10,7 +10,7 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./perfil-entr.page.scss'],
 })
 export class PerfilEntrPage implements OnInit {
-
+  notificacion:boolean=false;
  entrenadorId = null;
  numbers = [];
  numbersVacios = [];
@@ -30,6 +30,7 @@ export class PerfilEntrPage implements OnInit {
     this.entrenadorId = firebase.auth().currentUser.uid;
     if (this.entrenadorId)  {
       this.loadTodo();
+      this.loadTodo2();
     }
   }
 
@@ -45,6 +46,20 @@ export class PerfilEntrPage implements OnInit {
       this.numbers = Array(res.numEstrellas).fill(0).map((x, i) => i);
       this.numbersVacios = Array(5 - res.numEstrellas).fill(0).map((x, i) => i);
     });
+  }
+  async loadTodo2() {
+    const loading = await this.loadingController.create({
+      message: 'Loading Todo..'
+    });
+
+    this.todoService.getUsuario(firebase.auth().currentUser.uid).subscribe(res => {
+      loading.dismiss();
+      this.notificacion = res.notificacion;
+      //this.notificacion = res.notificacion;
+    });
+    await loading.present();
+   
+    console.log("Valor"+this.notificacion);
   }
 
 }

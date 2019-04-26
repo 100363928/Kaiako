@@ -52,6 +52,7 @@ export class TodoService {
   private entrenadorCollection: AngularFirestoreCollection<Usuario>;
   private entrenadores: Observable<Usuario[]>;
   private persona: Observable<Usuario[]>;
+  notificacion:boolean;
 
   constructor(private db: AngularFirestore,private lc: LoadingController) { 
     this.usuariosCollection = this.db.collection<Usuario>('usuarios');
@@ -149,26 +150,7 @@ export class TodoService {
   getUsuario(id) {
     return this.usuariosCollection.doc<Usuario>(id).valueChanges();
   }
+  
 
-   async esEntrenador(id){
-    let pers:Usuario={
-      nombre:'',
-      apellido:'',
-      nombreUsr:'',
-      email:'',
-      tipo:'a'
-    };
-    const firestore = firebase.firestore();
-    let persona = this.entrenadorCollection.doc(id);
-    const loading = await this.lc.create({
-      message: 'Cargandouuu datooos'
-     });
-     this.getUsuario(id).subscribe(res => {
-      console.log(res);
-      console.log('Pidiendo solicitudes');
-      pers.tipo = res.tipo;
-   });
-    if(pers.tipo=='cliente'){return false}else{return true}
-   }
 
 }
