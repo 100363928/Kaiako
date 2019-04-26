@@ -16,6 +16,7 @@
       <p *ngIf="tipo == 'cliente'"> Ha recibido una nueva rutina </p>
       <ion-card-title id="nombre" *ngIf="tipo == 'entrenador'"> Solicitud de Rutina </ion-card-title>
       <p *ngIf="tipo == 'entrenador'"> Tienes nuevas solicitudes pendientes </p>
+      <ion-icon  class="edit" name="close" (click)="borrarNotificacion()"></ion-icon>
     </ion-card-header>
     <ion-card-content>
 
