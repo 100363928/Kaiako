@@ -32,6 +32,7 @@ export class Tab3Page implements OnInit {
     if (this.usuarioId)  {
       this.loadTodo();
     }
+    this.loadTodo2();
   }
 
   async loadTodo() {

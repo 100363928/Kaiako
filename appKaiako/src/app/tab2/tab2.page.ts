@@ -31,6 +31,7 @@ this.rutina.map(res=>{
   this.open.nombre=res.nombre;
   this.open.ejer=res.ejer;
 })
+this.loadTodo();
   
 }
 

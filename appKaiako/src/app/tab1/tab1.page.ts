@@ -26,6 +26,7 @@ export class Tab1Page {
      this.entrenador = res;
      this.entrFiltered = res;
    });
+   this.loadTodo();
 }
 
 initializeItems(){
