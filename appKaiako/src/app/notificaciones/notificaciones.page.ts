@@ -13,17 +13,7 @@ export class NotificacionesPage implements OnInit {
 
   usuarioId = null;
 
-  usuario: Usuario = {
-    nombre: '',
-    nombreUsr: '',
-    apellido: '',
-    email: '',
-    tipo: '',
-    certificado: '',
-    anosExperiencia: '',
-    numEstrellas: 0,
-    descripcion: ''
-  };
+  usuario: Usuario = null;
 
   notificacionTittle = null;
   notificationText = null;
@@ -45,7 +35,7 @@ export class NotificacionesPage implements OnInit {
     }*/
 
     //Esta condicion hay que cambiarla por la de arriba
-    if(true){
+    /*if(true){
 
       //No me descarga el usuario???
       console.log(this.usuario);
@@ -64,7 +54,7 @@ export class NotificacionesPage implements OnInit {
       document.getElementById("notificacion").style.display = "none";
       //Poner una div escondida con un mensaje generico
       document.getElementById("noNotificaciones").style.display = "block";
-    }
+    }*/
 
     
 
@@ -92,6 +82,19 @@ export class NotificacionesPage implements OnInit {
       this.notificacion = res.notificacion;
       //this.notificacion = res.notificacion;
     });
+  }
+
+  borrarNotificacion(){
+    console.log(this.usuario);
+    this.notificacion=false;
+    this.usuario.notificacion=false;
+    this.modiUsr();
+    
+    
+
+  }
+  async modiUsr(){
+    this.todoService.updateUsuario(this.usuario, this.usuarioId);
   }
 
   
