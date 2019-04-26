@@ -73,7 +73,7 @@ export class SolicitudPage implements OnInit {
 
     this.todoService.addSolicitud(this.solicitud).then(() => {
       loading.dismiss();
-      this.nav.navigateBack('/menu/tabs/tabs/tab1/ver-entrenador');
+      this.nav.navigateBack('/menu/tabs/tabs/tab1');
     });
   }
 
@@ -100,5 +100,7 @@ export class SolicitudPage implements OnInit {
       
     });
   }
+
+ 
 
 }
